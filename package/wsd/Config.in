@@ -1,0 +1,5 @@
+config BR2_PACKAGE_WSD
+	bool "Web Service Device"
+	help
+	  Web Service Device for automatic discovery in Window network
+	  https://en.wikipedia.org/wiki/Web_Services_for_Devices

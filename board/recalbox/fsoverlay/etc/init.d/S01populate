@@ -1,0 +1,15 @@
+#!/bin/ash
+
+if [ "$1" != "start" ]; then
+  exit 0
+fi
+
+# create system directories
+mkdir -p /var/lib/sixad/profiles /var/lib/samba/private /var/cache \
+         /var/lib/dbus /var/run /run/udev/ /var/log /var/db/dhcpcd
+
+# sixad
+cp /etc/sixad.profile /var/lib/sixad/profiles/default
+
+# samba
+chmod 0755 /var/lib/samba

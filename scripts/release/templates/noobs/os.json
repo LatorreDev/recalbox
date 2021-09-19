@@ -1,0 +1,6 @@
+{
+  "version": "{{version}}",
+  "release_date": "{{releaseDate}}",
+  "name": "Recalbox",
+  "description": "The retro-gaming OS! Supporting 100+ gaming systems!"
+}

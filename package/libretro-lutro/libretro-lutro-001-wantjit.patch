@@ -1,0 +1,11 @@
+--- a/Makefile	2017-11-13 17:55:50.367568953 +0100
++++ b/Makefile	2017-11-13 17:58:19.966037808 +0100
+@@ -63,7 +63,7 @@
+    LDFLAGS += -Wl,-E
+ 
+ ifeq ($(ARCH), $(filter $(ARCH), intel))
+-	WANT_JIT = 1
++	WANT_JIT = 0
+ endif
+ else ifeq ($(platform), linux-portable)
+    TARGET := $(TARGET_NAME)_libretro.so

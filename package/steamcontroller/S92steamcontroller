@@ -1,0 +1,35 @@
+#! /bin/sh
+#
+# Start steam controllers services
+#
+
+systemsetting="recalbox_settings"
+
+case "$1" in
+  start)
+    enabled="`$systemsetting  -command load -key controllers.steam.enabled`"
+    if [ "$enabled" == "1" ];then
+      echo "Starting Steam-controller server"
+      /usr/bin/sc-xbox.py start &
+    else
+      echo "Steam-controller services: disabled"
+    fi
+    exit 0
+    ;;
+  stop)
+    echo -n "Stopping Steam-controller server"
+    /usr/bin/sc-xbox.py stop &
+    exit 0
+    ;;
+  restart|reload)
+    $0 stop
+    $0 start
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|reload}"
+    exit 1
+    ;;
+esac
+
+exit 0
+

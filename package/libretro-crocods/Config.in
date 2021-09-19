@@ -1,0 +1,7 @@
+config BR2_PACKAGE_LIBRETRO_CROCODS
+	bool "libretro-crocods"
+	depends on BR2_PACKAGE_RETROARCH
+	help
+	  Another libretro AMSTRAD CPC emulator core.
+
+	  https://github.com/libretro/libretro-crocods

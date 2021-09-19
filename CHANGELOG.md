@@ -1,0 +1,1595 @@
+# Change Log
+All notable changes to this project will be documented in this file.
+
+## [NEXT]
+- Disabled deploy to prod button on betas (#1932)
+- Add informations when logging with recallog (#1920)
+- Fix click on video in ES (#1887)
+- Remove px68k core from x86 board (#1875)
+- Fixed multiple translations in ES (#1880, #1881)
+- Bump Oricutron (#1893)
+- Bump SimCoupé to v1.2.5 (#1894)
+- Fixed Supermodel configuration (#1825)
+- Bump kronos libretro core (#1849)
+- Remove build kronos libretro core for x86 (#1849)
+- Bump Mame libretro core to 0.235 (#1889)
+- Bump core standalone scummvm v2.4.0 (#1884)
+- Fix media filenames for scraper (#1784)
+- Add yabasanshiro core on Pi4 (#1852)
+- Added extension .bin for gamegear (#1860)
+- Added extension .d64 and .tap for Vic20 (#1858)
+- Bump Fbneo 1.0.0.02 (#1859)
+- Improve netplay management (#1846)
+- Fix 'files:' tag in systemlist.xml generator (#1876)
+- Add EmuTOS bios for Atari ST (#1868)
+- Add ti99sim, standalone emulator for the TI-99/4A
+- Bump libretro-MGBA (#1873)
+- Bump Libretro-PX68K (#1875)
+- Add ti99sim, standalone emulator for the TI-99/4A (#1856)
+- Bump libretro-MGBA (#1873)
+- Add TRS-80 CoCo & Dragon32/64 systems (XRoar emulator)
+- Added Lowres-nx theme (#1586)
+- Fix sram demons of asterborg. Bump core libretro picodrivre (#1844)
+- Bump Libretro DOSBOX Pure to 0.16 (#1644)
+- Disable rewind for DOSBOX Pure (#1644)
+- Improve P2K (#1851)
+- Fixed TIC-80 games downloader (#1829)
+- Fix MSX1 folder name (#1840)
+- Add avahi deamon as recalbox-system dependency (#1826)
+- Added code to add retroachievements in romfsv2 (#1839)
+- Default values for sprite limits in core configuration (#1842)
+- Disable webmanager and virtual gamepads for RPI1/Zero salvation (#1841)
+- Set union merge for TESTING.md and RELEASE-NOTES.md (#1870)
+- Add cdtv support for uae4arm (#1823)
+- Added website meta in rpi imager (#1821)
+- Fixed GameCube fullname case and added some extensions for 64dd to play extensions (#1686)
+- Added retroachievements for romfsv2 (#1799)
+- Add random path support for emulationstation themes (#1793) (fixed)
+- Added more fixes for romfsv2 (#1686)
+- Fix DOS extension in romfsv2 (#1686)
+- Add FBNeo as core of Channel F (#1688)
+- Fix missing values for some cores (#1686)
+- Bump webmanager v2 to fix non working roms tab since romfsv2 (#1686)
+- Add recalbox overlays (#1787)
+- Add configgen support for Hypseus - bump (#1611)
+- Add genesisplusgxwide core on all boards (#1783)
+- Bump bump kodi inputstreamhelper script to 0.5.5 (#1782)
+- Populate share now uses systemlist.xml to populate ports (#1686)
+- Renamed mrboom to Mr. Boom in romfsv2 (#1686)
+- Fix/improve romfsv2 & cleanup some old packages/scripts (#1686)
+- Bump picodrive libretro core (#1757)
+- Bump snes9x2002 libretro core (#1757)
+- Bump snes9x2005 libretro core (#1757)
+- Added uae4arm in bios file (#1771)
+- Fix French spelling and readme files generation (#1686)
+- Fix fba configuration in romfsv2 (#1686)
+- Bump retroarch assets (#1725)
+- Bump retroarch to version 1.9.3 (#1725)
+- Add libretro uae4arm core (#1771)
+- Set grub timeout to 3 seconds (#1750)
+- Bump Hypseus to version 2.4.8 (DirtBagXon) to support Singe (#1611)
+- Show a message in emulationstation when the upgrade has failed (#1772)
+- Fix message "failed to set last used disc" for core libretro px68k. Bump core (#1775)
+- Fix changelog linter (#1759)
+- New romfs v2 (#1686)
+- Set grub timeout to 3 seconds (#1750)
+- Bump Hypseus to version 2.4.8 (DirtBagXon) to support Singe (#1611)
+- Add stella2014 core on RPI1/Zero and RPI2 as it is more performant (#1761)
+- Bump stella2014 core (#1761)
+- Bump stella core (#1761)
+- Add libretro LowRes NX core (#1586)
+- Bump flycast (#1737)
+- Bump python to version 3.9 (#1800)
+- Remove Hyperion (#1800)
+- Send pulseaudio logs to syslog to ease debug (#1774)
+- Allow pulseaudio to start when audio card not found (#1774)
+- Improve odroidxu4 OGST video playback (#1811)
+- Bump theme (#1827)
+- Fix pisnes crash on launch (#1838)
+- Bump python-pygame to 2.0.1
+- Bump buildroot to 2021.5 (#1815, #1909)
+- Bump rpi-firmware to 5.10.60 (#1815)
+- Bump rpi kernel to 5.10.60 (#1815, #1867)
+- Bump linux firmware to 20210716 (#1815)
+- Bump odroidxu4 kernel to 5.4.118 (#1815)
+- Fix rtl8812au wifi driver not installed on target images (#1815)
+- Disable rtl8812au wifi driver for odroidgo2 (#1815)
+- Bump legacy nvidia drivers to 390.143 (#1815)
+- Bump production nvidia drivers to 460.84 (#1815)
+- Disable Kodi 19 on rpi1, rpi2 and rpi3 due to compatibility issue (#1815)
+- Rework bluetooth scripts (#1482)
+- Use xz compression method for squashfs (#1848)
+- Edited 8bitdo N30 Pro 2 configuration (#1791)
+- Fix "failed to extract content from compressed" for Rick Dangerous (#1891)
+- Build SDL2 without HIDAPI support (#1845)
+- Fix and made translatable "No comment availble" text in p2k popup (#1911)
+- Fix EmuTOS and arcade dats location (#1921)
+- Add gamelink overload for gb and gbc (#1808)
+- Add recalbox-wpaf fan controller (#1832)
+- Rework share to upgrade necessary data (#1864)
+- Remove Flycast from x86 (#1902)
+
+## [7.2.2-Reloaded]
+- Fix controler #2 in swanstation (#1730)
+- Bump mupen64plus Glide64MK2 (#1766)
+- Fix dreamcast overlay offset rpi3 (#1695)
+- Migrate PPSSPP saves to new directory (#1773)
+
+## [7.2.2-Beta3]
+- Fix mupen64plus resolution (standalone)
+- Make mupen64plus working on Odroid Advance Go2/Go Super (standalone)
+- Force 16bpp in mupen64plus + rice for RPI4
+- Fix ratio issues in Dolphin & Supermodel3
+- Switch PUAE to A600 instead of A500PLUS for amiga600 system
+- Fix PSP save path
+- Bump mupen64plus standalone core (#1712)
+- Libretro Parallel n64 automatic video plugin is set to Rice (#1712)
+- Libretro Parallel n64 now works on odroidxu4 (#1712)
+- Mupen64plus rice plugin added on odroidxu4 and odroidgo2 (#1712)
+- Fix Moonlight on rpi4/kms (#1628)
+- Fixes the time conflict between Windows and Recalbox in case of dual-boot (#1791)
+- Add n64 kubii and n64 retro-bit pad settings (#1512)
+- Mupen64plus GLideN64 is back on rpi3 (#1700)
+- Fixed game compatibility on ppsspp (#1756)
+- Added tmp directory for docker builds (#1765)
+- CI: do not clone buildroot when running linter (#1765)
+
+## [7.2.2-Beta2]
+- Upgrade process creates missing directories in /boot (#1734)
+- Add libretro-mupen64plus-nx for x86 and x86_64 (#1407)
+- Change repo + bump swanstation (#1744)
+- Fix MAME menu is displayed if you add credit with the wiimote (#1787)
+- Fix ratio selection for gamecube, wii and supermodel
+- Bump supermodel to r862 and enable build optimisation (#1785)
+
+## [7.2.2-Beta1]
+- Fix build instructions in README.md
+- Fix crash in netplay lobby window
+- Fix update process of emulationstation in beta versions
+- Add warning in release notes about processing (#1696)
+- Fix erratic advancemame builds (#1694)
+- Fix missing sound on boot video (#1596)
+- Fix no sound on Sound Open Firmware compatible audio cards (#1677)
+- Add configurations for SN30-GP controller (#1693)
+- Updated mame version in readme files
+- Bump odroidxu4 kernel to 5.4.109 (#1678)
+- Fix OGST display not working on odroidxu4 (#1678)
+- Bump bootx64 efi to 2.0.4 (#1710)
+- Replace old rtl8821au wifi driver with rtl88xxau wifi driver (#1718, #1729)
+- Fix missing rtl8821cu wifi drivers (#1717,#1728)
+- Fix HID bluetooth device not working (#1704)
+- Reworked lightgun detection by harmonizing spaces/tabs and added not tested game on PSX
+- Remove duplicate MD5 bios
+- Add nightly builds (all nights on master) (#1673)
+- Add branch builds (manual on merge requests) (#1673)
+- Renamed review builds to beta builds (tags only) (#1673)
+- Remove update type from ES user interface (#1673)
+- Add 8bitdo Pro 2 maaping (#1713)
+
+- Bump Retroarch to v1.9.3
+
+## [7.2.1-Reloaded]
+- Remove game hide in odroidgo2 pre-upgrade.sh
+- Bring back fan speed setting on odroidxu4 (#1662)
+- Es Improve subfiles detection. ignore img files with ccd
+- Fix arcade view systems missing model3, atomiswave, naomi, naomigd, daphné
+- Fix video lag on ppsspp
+- Fix laggy boot video by forcing video output mode for mpv for rpi1,2,3 (#1627)
+- Add new MD5 from MAME 0.230 for House of the Dead 2
+- Create bios/mame folder by default
+- Add missing file extensions (scv and wii)
+- Fix Scraper default language
+- Fix gameclip initialization on network shares
+- Fix gameclip launch
+- Fix freezes running a game while playing video
+- Fix crash when loading heavy themes
+- Fix missing popup when changing hostname
+- Fix IPv6/IPv4 priority when connecting WIFI
+- Fix swanstation issues (former libretro-duckstation) (#1640)
+- Fix ports cavestory x86 and x86_64 (#1665)
+- Revert kodi to XBMC upstream version (#1631)
+- Add missing wifi and bluetooth firmware on odroidgo2 (#1642)
+- Fix case detection after factory reset
+- Lightgun system is shown by default
+- Fix rating componant running out of screen
+- Fix sound menu & output auto-selection
+- Fix missing translations
+- Fix SCV scraping
+- Fix rtl88x2bu wifi driver now works again
+- Fix odroidgo2 v1 gamepad
+- Fix forgetting unconnected bluetooth devices
+- Enable FastConnectable bluetooth option, fix joycon not reconnecting (#1666)
+- Remove reicast emulator
+- Fix problem autoconf pad 8bitdo (#1624)
+- Fix pixel-perfect settings being incorrectly set in menu
+- Fix update popup over gameclip
+- Fix hiding a game wipe all its metadata
+- Fix theme swithing & theme option edition
+- Improved .cue/.gdi/.m3u subfile detection
+- Force volume of all output to 100%
+- Fix crash when running a game from the search window
+- Send hostname when requesting dhcp address
+- Set PPSSPP Vsync to on, in default config and in pre-upgrade for rpi4
+- Fix gpsp compilation option (#1626)
+
+
+## [7.2-Reloaded]
+- Bump libretro-mame
+- Bump Datfiles for Mame, Atomiswave, Naomi, NaomiGd, Model3 on Romset 0.230
+- Add Atomiswave intro video
+- Fix glxinfo and more tools mesa 3d demos package
+- Add colecovision Netplay with FBNeo core
+- Add frequency screen option for X86, X86_64 by Chriskt78
+- update of the Port family
+- Fix and Bump Dolphin emulator
+- Bump supermodel to version 858 Fix bypass configgen option for model3
+- Cherry pick files to remove when quick building
+- Add GBC and Naomi intro videos
+- Simplify recalbox.version for branches builds
+- Fix Quickbuilds
+- Add quickbuild stage in ci
+- Copy files directly from latest to TAG on the bucket on production deployment
+- Restart and clean proxy on production deployment
+- Bump Amiberry to v3.3
+- Fix missing libgo2 C headers (#1445)
+- Fix compilation of libgo2 (#1446)
+- Simplify and streamline Recalbox description for external installers
+- Fix oga (v1) controller
+- Bump RPI4 kernel
+- Bump RPIs firmware
+- Add multi-source roms management
+- Add option to show/hide preinstalled games
+- Add GameClip screensaver
+- Add port readonly parameter to empack
+- Fix some crash in ES when stopping videos
+- Add feature slides during install
+- Bump rpi1, rpi2 and rpi3 kernel to version 5.10 (#1453, #1538)
+- Add rpi-400 dts
+- Bump mupen64plus-core, uiconsole and rsphle for all boards
+- Bump mupen64plus gles2rice, glesn64, gliden64 and rice video plugins
+- Enable mupen64plus with rice for odroidgo2 (#1456, #1459)
+- Fix compilation of wm8960 for all boards (#1457)
+- Patch libwebsocket to match mosquito's requirements
+- Fix compilation of mupen64plus core and gliden64 for rpi2/3 (#1461)
+- Bump stella
+- Compile MelonDS & DesMume on arm/aarch64 boards
+- Move to private theme repository for official Recalbox builds
+- Add libretro-mupen64plus-next for odroidxu4 (#1465, #1467)
+- Bump libretro-pcsx_rearmed to 4bc5e3507d00a20344ad3fbf2571b66e9a8640ea
+- Bump libretro-melonds to 7bbf8e1606697f7591072d05b61fae84e8b49455
+- Bump buildroot to 2020.11
+- Bump ppsspp to v1.10.3-1299-gdd2c09358
+- Disable libretro-mupen64plus in profit of libretro-mupen64plus-nx
+- Bump libretro-flycast to b7839962a58577cd94992ecfc0f3c6f041b90484 (12/11/2020)
+- Bump libretro-mame to f0c675d604317fdbfaaa08997bd843af6bcfd193 (0.226)
+- Bump libretro-melonds to 7bbf8e1606697f7591072d05b61fae84e8b49455
+- Fix a silent error in `copy-recalbox-archives.sh`
+- Remove duplicate directives in defconfigs
+- Fix detection of 4k screen (#1384)
+- Fix multiple issue in gameclip screensaver
+- Add libretro neocd core
+- Add scv to configgen
+- Add scv theme
+- Fix VideoEngine crash
+- Fix VideoEngine dead-lock
+- Remove duplicate network wait time during boot
+- Add support for three Realtek wifi cards (rtl8189fs, rtl8821au and rtl88x2bu) (#1377)
+- Add Super Cassette Vision core
+- Debump python-gobject
+- Fix gpsp core (temporarily disable dynarec until it's fixed with gcc >= 8)
+- Bump SCV (working on RPis)
+- Fix OGA default mapping
+- Add Nintendo Switch joycons and combined joycons support
+- Add private theme token to yaml
+- Add libretro dosbox-pure
+- Fix neogeo cd system name in bios database
+- Fix screenshot rotation on odroid advance go
+- Grub2 package fix for legacy booting (#1484)
+- Fix SCV theme
+- Fix crash in empty bios checker list
+- Fix hidden screenshot system
+- Implement Pulseaudio (#1483, #1511, #1578, #1581, #1588, #1599, #1612)
+- Resize & rotate install slides on GoA
+- Fix pulseaudio dependency in emulationstation package
+- Fix missing early logs
+- Bump emuscv (add sound support)
+- Bump hatari
+- Add libretro retro8 core (PICO-8)
+- Fix pico8 system
+- Remove common retroarch configuration in odroidgo2 fsoverlay
+- Set vc4-kms-v3d as default overlay on rpi4 (#1496)
+- Enforce upgrade process (#1498, #1530)
+- Add Pocket Challenge v2 system (pcv2)
+- Make /boot/config.txt part of Recalbox distribution. User settings moved to /boot/recalbox-user-config.txt (#1504, #1506)
+- Enforce upgrade process episode 2 (#1505)
+- Fix wifi support for open, WPA-PSK-SHA256 and WPA3-Personal (#1492)
+- Fix 8Bitdo NES30 Pro rev 1 mapping
+- Fix name for palmos rom
+- enforce upgrade process (#1498)
+- Bump and patch Libretro Beetle Saturn
+- Retroarch patch for X11 multi-mouse and additional udev logs
+- Flycast patch to have not blend lightgun crosshairs
+- Initial Lightgun feature included for Libretro cores in configgen (compatible with dolphin bar/wiimote)
+- Update DOOM & SIGIL screenshots
+- Remove useless palm-os bios from bios database
+- Rework overclocking
+- Impreved menu ergonomy & pad per player manement in ES
+- Add license information in all packages/mk
+- Fix neogeo cd romfs selection from libretro-neocd
+- Add ci linter for package license
+- Bump ES: new menus + fix pi4 identification
+- Bump Configgen: fix FPS
+- Bump FBNeo, SCV (+sound) & DosBox Pure
+- Fix TIC-80 repository
+- Fix error message `/var/db/dhcpd.leases no such file or directory`
+- Fix ES missing dependencies
+- Add Minecraft's port Craft on pc
+- Bump libretro-uae (chd support on amigacd32 & amigacdtv)
+- Fix FDS's extensions
+- Fix 4k resolution handling on rpi4
+- Bump ScummVM (February '21)
+- Bump BlueMSX
+- Add comments on overclock settings (#1433)
+- Fix case installation always triggered
+- Bump all subprojects
+- Enabled retroarch core option nospritelimit
+- Start bluetooth earlier (#1523, #1583, #1590, #1613)
+- Bump webmanager v2
+- Fix gamecon_gpio_rpi build time (only build as module) (#1552)
+- Fix mk_arcade_joystick_rpi build time (only build as module) (#1553)
+- Fix wm8960 audio hat build time (only build as module) and add kernel 5.10 compat (#1554)
+- Fix neogeo CD configuration in romfs
+- Fix webmanager v2
+- Add GoS wizard translations
+- Remove old libretro-scummvm references everywhere
+- Fix GoS brightness issue when exiting DIM screensaver
+- Add langauges: lt_LT gl_ES pt_BR ro uk_UA
+- Add support for Odroid Go Super aka odroidgo3
+- Bump rockchip-libmali (vulkan coming)
+- Fix shaders on odroigo2
+- Fix RetroArch shortcuts on odroidgo2
+- Bump Hypseus to version 1.3
+- Improve internal scraper
+- Multiple minor menu fixes in EmulationStation
+- Bump SCV (optimizations + virtual keyboard)
+- Add easy emulationstation update
+- Bump configgen - fix dolphin/pulseaudio issue
+- Fix 64dd missing core (lr-mupen64-next)
+- Manage sub-systems in Configgen (fix neogeocd core issues)
+- Fix boot video is played while slides are displayed (#1536, #1584)
+- Improve PSX emulator speed (duckstation uses Vulkan, #1563)
+- Fix paralleln64 on odroidgo2 (#1569, #1575)
+- Bump emuscv (optimizations + recalbox logo)
+- Activate Duckstation on xu4, rpi3, rpi4, x86 & x64
+- Add lightgun system in EmulationSation
+- Minor fixes & improvements in internal scraper
+- Make firmware upgrade optional (#1571, #1572)
+- Add Watara Supervision system (lr-potator)
+- Fix paralleln64 on Pi4
+- Add paralleln64 on pi3
+- Add control interface Ultimarc J-PAC (#1561)
+- Add Elektronika BK series on all boards (lr-bk)
+- Bump Fbneo (March '13)
+- Updated French readme files
+- Bump Retro8
+- Bump ES to fix some beta 16 bugs
+- Bump Configgen to add Watara Supervision & BK defaults
+- Improve lightgun database & management
+- Fix overclocking menu ordering
+- Update description O/C for all pi
+- Update es_bios.xml (add bios Elektronika BK)
+- Add lightgun database XSD
+- Bump Odyssey²
+- Bump Fbneo (March '26)
+- CI enable fork builds and pipelines
+- Add controller 'SNES Controller'
+- CI beta test linter now runs only on tags
+- Check fix bios md5 for GB and GBC
+- Bump Np2kai
+- Make raspi2png works with rpi4 KMS overlay (#1587)
+- Enable vibration for pcsx_rearmed libretro core (#725)
+- Update screenshot mixv2recalbox of ports (2048, Dinothawr, Mrboom, Quake, Rick Dangerous)
+- Bump Quasi88
+- Bump es (add reset factory, swap a/b, fix bt audio)
+- Bump nVidia drivers to 460.67 (#1299)
+- Bump PPSSPP to v1.11.3 (#1589)
+- Removed zip from Sam Coupé file extensions in readme files
+- Fix README.md link to documentation
+- Update lightgun.xml (add Point Blank for fbneo)
+- Add VideoPac+ System
+- Separate VIC-20 system from C64
+- Fix Theme svg from SCV system
+- Fix Supervision naming in configgen
+- Fix sound issue on GPIcase (#1476)
+- Fix fan not stopping on shutdown on nespi4case
+- Fix useless reboot in O/C menu
+- Fix Kodi enable/disable option
+- Fix Netplay pinged while a game is running
+- Fix wrong file deleted in reset factory option
+- Add sound mode
+- Fix slow libretro-mame (#1387)
+- Fix bios path neogeocd and file restructuring
+- Updated ES log path for support script
+- Added supplemental bios fixes
+- Fix svgs in SCV's theme
+- Fix pad ordering not saved
+- Fix minor issues in Emulationstation
+- Fix emulationstation log path in webmanager
+- Fix chmod in recalbox-hardware package
+- Remove case setting when upgrading for GPicase for 7.2
+- Remove case setting when upgrading
+- Bump ScummVM and merge with ResidualVM
+- Fix neogeo bios path #2
+- Add missing neogeocd letter in md5
+- Fix externalscreen.sh if first screen is 2K/4K but has not FullHD resolution
+- Fix install slide for oga and ogs
+- Bump hardware repo (nVivia 460)
+- Bump EmulationStation (latest 7.2 fixes)
+- Bump configgen (fix Supermodel3 emulator)
+- Bump Theme (fix SCV & Vic20 svgs)
+- Fix sound menu crash on GPI
+- Fix Vic20 theme (again)
+- Add early Bk theme
+- Fix auto-scraped systems
+- Update all translations from/to poeditor.com
+- Improve FR texts
+- Fix genesis theme
+- Fix bluetooth device not found on first boot
+- Remove non working emulators on Pi4
+- Bump theme
+- Add .rvz support on Dolphin
+- Bump theme again (videopc+ & elektronika bk)
+- Fix uboot header for OgS when updating
+- Bump theme (model3 update)
+- Fix recalbox stable version generation
+- Change board build order for gitlab ci
+- Remove Donkey Kong Classic
+
+## [7.1.1-Reloaded]
+- Fix abnormally long boots
+- Fix theme issues
+- Fix model 3 sound option
+- Fix metadata edition #2
+- Fix various unsaved settings in Emulationstation
+- Fix menu theme
+- Fix p2k dead-lock
+- Fix demo mode info screen
+- Fix Supermodel build and move Nvram on saves path
+
+
+## [7.1-Reloaded]
+- Fix rpiimager by reducing descriptions and change os order
+- Remove updatev2 directory from sources
+- Fix betatest TESTING.md lint script
+- Fix high cpu load with second minitft scripts
+- Fix NOOBS installation
+- Add model3 arcade system
+- Add odroidgo2 build stage in .gitlab-ci.yml
+- Bump ES
+- Use RELEASE-NOTES.md to generate the message for upgrades
+- Fix picodrive rewind freezes by bumping to the last version
+- Fix hyperion compilation on Pi4
+- Improve second miniTFT screen scripts
+- Fix AdvanceMAME log output
+- Fix AdvanceMAME configgen
+- Improved NESPi4 case detection
+- Add .car extension support for atari800
+- Bring back all firmwares
+- Fix boot from SSH/HDD on rpi4
+- Fix Intel WIFI not working (#1363)
+- Fix arcade hash calculations
+- Fix game extension filtering
+- Check free space before downloading updates
+- Fix screenshots on x86/x64
+- Fix multiple issues in ScummVM/ResidualVM: lag/crash on Pi4, joystick buttons, ...
+- Add WPS support
+- Fix upgrade procedure that could fail in some circumstances (#1376)
+- Bump FBNeo & add as core for colecovision, gamegear, fds, master-system, megadrive, msx1, nes, ngp, pc-engine, sg-1000, supergraphx, zx-spectrum
+- Fix odroid xu4 platform name to odroidxu4
+- Fix pt_BR translations (thank to Zing)
+- Fix battery icon on PC
+- Fix theme crash on empty subsets
+- Fix regression when upgrading device (#1419)
+- Fix Noobs & RasPiImager configuration
+- Add Odroid Go Advance board support
+- Fix composite MD5
+- First boot wizard
+- Check kodi executable before displaying related menus/options
+- Fix gamelist bein overwritten when edited from outside ES
+- Fix scrapper settings not always saved
+- Add share/overlays/.overlay.cfg and share/overlays/system/.overlay.cfg for gloal/per-system overlay-related retroarch settings
+- Fix build of image for odroidxu4 (#1425)
+- Limit virtual keyboard font for all plmtforms
+- Add core configuration for PUAE when run on cd32 & cdtv systems
+- Clone uae @ gitlab.com/recalbox / patches moved on recalbox branch / removed patches in .mk
+- Fix puae build
+- Add gitlab macro to external tree
+- Fix external share does not mount (#1427)
+- Add wsd (web service device) package
+- Update bios database
+- Improve wsd daemon: keep only wsdd2 in memory
+- Add missing extensions in various romfs
+- Fix PPSSPP configuration generator
+- Improved flashback support
+- Add pi400 support
+- Update bios database #2
+- Fix metadata edition
+- Bump Kodi to 18.9 (#1345) and add its hashes (#1432)
+- Add broke sdudio's game demos
+- Add missing PT/ES/DE/IT/FR translations
+- Add Model3 theme
+- Fix tvservice script on Odroid Go Advance
+- Enable multi-thread LTO optimizations
+- Bump FBNeo to fix megdrive driver (thanks to Barbudreadmon)
+- Fix bios database (neogeo.zip)
+- Play share video even when noobs created partitions
+- Switch broke studio's games to FCEUM core
+- Fix update window size on low resolutions
+- Add 4 mame games free to distribute for non-commercial use
+- Update TESTINGS.md
+- Fix tvservice on x86/x64 - rely on xrandr instead of framebuffer
+
+
+## [7.0.1]
+- Fix resolution and fullscreen display for intro video
+- Fix Missing dat files mame, naomi(Gd), atomiswave
+- Add waveshare wm8960 audio hat support
+- Fix xarcade2jstick driver to support xarcade v2 and other keyboard encoders
+- Add raspi-gpio useful program (C written)
+- Add new intro videos
+- Change snes default emulators: rpi0/1 - pisnes, rpi2/3 - snes9x2010 & snes9x otherwise
+- Add options to RPI4 config.txt to fix black screen issues
+- Bump kodi netflix plugin to 1.10.0
+- Fix doom.wad required for WADs games (prboom core)
+- Fix Mupen64 L1/R1
+- Fix DosBOX not exiting
+- Fix pads in reversed order
+- Fix recalbox.conf being always overwritten by emulationstation
+- Fix missing media being not updated using internal scrapper
+- Fix outdated bios list in webmanager
+- Fix zfast and crt-pi shaders
+- Fix lastplayed metadata
+- Fix missing psx bios md5
+- Fix hdmi-cec not working on rpi4
+- Fix PS4 pad pairing issue
+- Fix duplicated entries in lastplayed
+- Fix port & arcade virtual system not searchable
+- Fix empty card names in audio output device list
+- Fix no sound through jack on RPi1/2/3
+- Bump fbneo
+- Fix false error logs
+- Fix information popup positions
+- Fix ignored values in recalbox.conf
+- Add kubo 3 for NES (dale_coop)
+- Bump linux-firmware to 20200918
+- Fix oricutron bios path
+- Fix false update message with xml data
+- Fix ShaderSets
+- Fix mouse not working on rpi4
+- Fix multi-file zipped roms hash calculations (arcade)
+- Add missing bios report file
+- Add more xbox pathed configurations
+- Fix idroid pad for kodi
+- Fix network status in Network menu
+- Fix i18n plural forms
+- Fix video player behevior while reading invalid files
+- Fix NESPi4 cas shutdown script
+- Fix Rpi4 GPU OOM in VK
+- Fix crash while quitting gamelist menu in virtual systems
+- Bump kodi
+- Removed delete button from virtual systems
+- Fix main menu still accessible while it should not be.
+- Fix crash in p2k window
+- Fix gpi shutdown script
+- Make pc98 playable with pads/joysticks
+- Fix screensaver triggered while downloading updates
+- Fix Rpi4 random freezes
+
+
+## [7.0]
+- Update tft-waveshare overlays (support of 3.5 rev B and rev C tft screen)
+- Add support of second mini TFT screen for OGST Case and SPI/DPI Small TFT screen on Rpis 1/2/3
+- Apply sound volume settings to splash video on Pi
+- Fix REICAST bug on XU4
+- Add volume control to XU4
+- Recalbox system is now a squashfs firmware
+- Automatic recovery after 3 boots failure
+- Brand new update system, easier than ever
+- Share partition is created in exfat on fresh install
+- Major system upgrade. See https://github.com/buildroot/buildroot/blob/2020.02.3/CHANGES for the full log
+- Bump virtualgamepads to v1.4.0 and added fixes for nodejs 12
+- Bump rpi-firmware to v1.20200212
+- Bump megatools to 1.10.2
+- Fix Omxplayer after Ffmpeg bump
+- Fix Kodi after Ffmpeg bump
+- Add WiringPi progs abd libs
+- Bump ffmpeg to 4.4.2 (ffmpeg, ffplay, ffprobe)
+- Add 6 boot videos : snes, megadrive, mame, winners, explode and hologram
+- Add joystick rules for IPega PG-9037
+- Fix Odroid XU4 fan issue
+- Fix Odroid XU4 sound issue
+- Fix: EMMC boot on XU4
+- Fix 8bitdo udev rules issue
+- Add 8bitdo N30 Pro 2 controller to pre-configured pads/joyticks
+- Odroid XU4 uboot bumped to odroidxu4-v2017.05
+- Fix x86/x64 framebuffer
+- Fix x86/x64 video splash
+- Add "system.splash.path" videos path override option to recalbox.conf
+- Bump DosBox to r4290
+- Bump ScummVM to 2.2.0
+- Bump ResidualVM (2020-09)
+- Rewrite scraper with more options & video support
+- Improve ES stability
+- Decrease ES's memory requirements
+- Optimize ES boot time
+- Fix fulscreen for oric and apple2 on x86/x86_64
+- Fix apple2 on x86/x86_64
+- Fix & Bump dolphin emulator on x86/x64
+- Adult game filtering in EmulationStation
+- New sorting options: Publisher and system-name for all virtual systems
+- 3 new virtual systems: All-games, Last-Played and Multiplayers
+- New virtual systems per genre
+- Region highligting in gamelist
+- Improved Genre & Region processing in EmulationStation
+- Added missing texts into translated texts
+- Improved french translations
+- Fix duplicate folders in virtual systems
+- Fix quit menu not being accessible when boot-on-gamelist is on
+- Faster CRC calculation for netplay
+- Game sorting and Jump-to-letter now unicode compatible
+- Bump oricatmos emulator on lastest version
+- Bump simcoupe emulator
+- Fix some bad behaviors in favorite management
+- Add support for nVidia proprietary drivers version 390 and 440
+- Simplify emulator/core selection UI
+- Bump retroarch to v1.9.0
+- Bump retroarch-cheats to v1.9.0
+- Bump libretro-assets on last version
+- Bump libretro-cores family
+- Fix reboot Emulationstation with webmanager
+- Add laptop switch external screen function only for x86_64 x86
+- Fix reboot Emulationstation with webmanager
+- Add Nintendo 64DD
+- Add libretro mame
+- Add EmulationStation event-driver user scripts
+- Rename 4do to opera (newer 3do emulator fork)
+- Add libretro-race (new ngp & ngpc performance emulator)
+- Add mqtt server (mosquitto) + paho-mqtt python package
+- Add Pad-2-Keyboard driver
+- Add search feature and new arcade virtual keyboard
+- Bump Theodore core (add emulation of Thomson TO7 and TO7/70 computers)
+- Enable flycast con rpi3, xu4 and x86
+- Rename prboom system to doom
+- Enable amigacd32 & amigacdtv emulation with libretro-uae
+- Set vice_x64sc as default c64 emulator + JiffyDOS support
+- ERTM enabled by default
+- Bump mpg123 & fluidsynth libraries
+- Add support for mp3, opus, midi, modules, wave and flac in EmulationStation
+- Bump Amiberry to v3.1.3.1
+- Add naomigd as a separate system
+- Bump AdvanceMame to v3.9
+- Add OpenBOR
+- Add Solarus
+- Improve the management of external screens and selection from recalbox.conf by Chriskt78
+- Add opengl on Retroarch for X86(_64)
+- Add libretro-mrboom as content-less core within ports system
+- Renamed fba_libretro system to fbneo
+- Move CaveStory and Doom into ports
+- Add Quake 1 port with libretro-tyrquake
+- Add 2048 port with libretro-2048
+- Add Dinothawr port with libretro-dinothawr
+- Add Rick Dangerous port with libretro-xrick
+- Add Flashback port with libretro-reminiscence (need full game files to be added)
+- Add Wolfenstein 3D port with libretro-ecwolf (full game files go all in the same directory)
+- Add Dungeon Crawl Stone Soup with libretro-crawl
+- Add Out Run port with libretro-cannonball
+- Add libretro's port of EasyRPG Player (2000 and 2003)
+- Add libretro-mupen64plus-nx for n64 & 64dd emulation (rpi only for now)
+- Bump buildroot to 2020.02.4
+- Bump Mesa3D to 20.1.3
+- Add libretro-scummvm on all platforms
+- Add libretro-pcsx_rearmed on pc
+- Add Netflix Kodi video plugin
+- Bump kodi.plugin.video.youtube to 6.8.2
+- Add libretro-mesen on rpi4, xu4 and pc
+- Add libretro-mesen-s on rpi4, xu4 and pc
+- Improved Apple IIGS autoboot support
+- Improved support of vsync/integer scale/smooth for several standalone emulators
+- Add shader management in EmulationStation
+- Fix audio issues
+- Improve GPI support
+- Add videosnaps sound & menu on/off
+- Add arcade system management in EmulationStation
+- Fix gamelist reset when editing metadata
+- Add support for NESPI4
+- Add password management in netplay
+- Add spectator mode in netplay
+
+## [6.1.1]
+- Add zfast shaders
+- Fix reicast on XU4 & PC
+- Fix Amstrad GX4000 .cpr/.bin extensions
+- Fix libretro-uae bios list
+- Fix GPIO driver not loading
+- Fix random crashes while mapping pads
+- Improved multi-event filtering while mapping pads
+- Odroid XU4 fan control optimization
+- Fix apple2gs configgen and patch emulator to support dpads
+- Change apple II mapping from L/R to A/B
+- Make PiSNES fullscreen
+- Fix demo screen ratio
+- Fix Arcade system not available in GUI
+- Fix demo mode on PC (no infinite run)
+- Bump kernel firmwares
+- Fix emulationstation reporting wrong free space
+- Fix configgen exit in demo mode
+- Fix missing apple IIGS bios information
+- Odroid C2 removed from supported boards
+- Add new Game Boy shader
+- Fix diacritic characters lowercasing/uppercasing
+- Fix atari800 core crashes
+- Fix enable cheevos badge in retroarch menu (retroachievement.org)
+- Make advancemame available on xu4 and x86 (not x64)
+- Set Retroarch threaded_video option to off by default
+- Fix component video still active while scrolling
+- Wifi: connman replaced by wpa_supplicant
+- Bluetooth: improve association
+- Bluetooth: option to enable or disable ERTM in recalbox.conf
+- Bluetooth: display already paired devices in ES
+- Add Retro City controller defaults
+- Add videosnaps config keys in recalbox.conf
+- Bump FreeIntV
+- Bump FBNeo
+- Fix videosnaps on x64 gpus
+- Bump Retroarch
+
+## [6.1]
+- Replacement of the neogeo intro video
+- Fix : bug introrecaboxsms.mp4 is not playing fixed with reencoding
+- Enable Vsync in dolphin-emu
+- Enable VSync on retroarch (x86, x86_64)
+- Fix: adding gpicase specific video dpi overlay
+- Fix: adding gpicase specific audio pwm overlay
+- Fix: non working GPIO and Custom GPIO on Pi0 and Pi1
+- Fix: Recalbox manager: typo error
+- Cap32: Add gx4000 (Amstrad CPC+ series) as own system
+- Fix keyboard configuration specification for `es_input.cfg`
+- Fix boot intro videos (x86, x86_64)
+- Enable both hotkeys and I2C on RasberryPi GPIO
+- Add .7z extensions where they were missing
+- Bump MoonLight to 2.4.10 and support last versions of GFE
+- GUI: In game views, START open the game contextual menu. SELECT switch between all game/favorites only
+- Fix system unique key: fullname+platform instead of name+platform
+- Fix demo mode using retroachievements
+- Fix demo mode using autoload/autosave
+- Fix double-quotes in dolphin's configuration
+- Fix empty controller file for ScummVM
+- Fix x86/x64 scanning too few /dev/input/event
+- Bump ScummVM (new theme)
+- Enable toolchain LTO
+- Add Uzebox emulator (libretro-uzem)
+- Fix wifi issue in case of bad recalbox.conf
+- Add game info screen in demo mode
+- Change default mame emulator to mame2003_plus core (0.78 romset with improvements and additions)
+- Web interface: IRC link replaced by Discord link in help section
+- Add RetroArch option "quit_press_twice" to confirm before exiting a game
+- Shutdown System option moved at the top of the Quit menu
+- Fix lutro zipped games unzipping in the .lutro folder
+- Support archive: switch to transfer.sh Temp File Hosting
+- Add a CI stage for linting
+- Update Theodore core: add emulation of Thomson MO6 and Olivetti Prodest PC128
+- Fix key-based SSH login with NTFS and ExFAT external drives
+- Fix wifi issue on some boards
+- Architecture added to the image name
+- Retroarch ratio resynced ('custom' and 'core-provided' added, old 'custom' renamed 'none')
+- New theme folder in /recalbox/share/themes
+- Moga Pro Power, Wiimote, Logitech RumblePad added to es_input.cfg
+- Enable threaded-dsp option in 4do core
+- Bluetooth: Previously configured pads automatically unpaired before pairing again
+- Bump retroarch to 1.7.8
+- Bump Odroid XU4 kernel to 4.14
+- More firmwares and drivers added
+- Bump libretro pcsx_rearmed to support .chd files and "optimized" PSXONPSP660.bin BIOS
+- Wifi password encryption removed
+- Bump raspberry pi firmware - Compatible Pi 3A+
+- New video snaps
+- Add Spectravideo 318/328 emulator (libretro-bluemsx)
+- Add gearsystem libretro core
+- Add sameboy libretro core
+- Add GSplus standalone emulator
+- Improve volume balancing between RetroArch and Recalbox
+- Add Sharp X1 emulator (libretro-xmil)
+- Add Palm OS (OS4, OS5 still in development) emulator (libretro-mu)
+- Add recalbox-hardware package for case management
+- Add gpi auto-detect & install drivers & settings
+- Fix steam controller driver
+- Add optimized settings manager (used in scripts and boot scripts)
+- optimize init scripts up to S09wifi (including heavy refactor of S03splash and S09wifi, and some scripts re-ordering)
+- Linapple-Pie: Use upstream repository
+- Stella libretro: Rebrand stella to stella2014 and add upstream stella core
+- Mupen64Plus libretro: Migrate Glupen64 to Mupen64Plus
+- N64: add .zip and .7z extensions (only work with libretro-mupen64plus)
+- RetroArch Disc Project: Initial backend implementation
+- Several core/emulator bumps
+- Fix amiga multi-disks files bugs with []
+- Document `/boot/recalbox-boot.conf` (in-file comments)
+- Add PC-88 emulator (libretro-quasi88)
+- Bump oricutron
+- Bump ResidualVM
+- Add TIC-80 emulator (libretro-tic80)
+- Replace old ScreenScraper scraper with a new one using API v2
+- Replace old TheGameDB scraper with a new one usign latest APIs
+- Add Vice x64sc (accurate) emulator for Commodore 64
+- Remove generic MSX in favor of new MSXturboR system
+- Add Atomiswave, NAOMI and new Dreamcast emulator on x86_64 (libretro-flycast)
+- Add Saturn libretro emulators (mednafen_saturn, yabause and yabasanshiro) on x86(_64)
+- Add new recalbox/retroarch/core configuration override par system/folder/game
+- Switch default retroarch ui to ozone
+- Improved RGUI configuration on GPI
+- Fix post-upgrade cleanup
+- Add new recalbox.conf keys to ease AI Service configuration
+- Add arcade meta-system
+- Add amiga emulator (libretro-uae) on all platforms
+
+## [6.0] - DragonBlaze
+- Change name from 5.0 to 6.0 DragonBlaze
+- Adding GPIO, Custom GPIO and MCP inputConfig in es_input.cfg
+- Adding Konami RB splash intro video
+- Add joystick rules for IPega PG-9099 and PG-9021
+- Add new keyboard layouts
+- Multiple emulator/core bumps
+- Fix: es_input.cfg format validation
+- Add a basic migration system
+- Raise max allowed temperature on Raspberry Pi 3
+- Fix: Internal Screenscraper temporary disabled - Need to be rewritten
+- Fix: Changed popups handling for better stability
+- Fix: Restore scrapped folder display
+- Fix: Netplay: game not listed in lobby if password protected
+- Fix: Netplay: no game launch if core doesn't match
+- Fix: delete sends to top or bottom
+- Fix: crash when deleting last element
+
+## [6.0-rc3]
+- Press start/enter to play the current game in demo mode
+- Add PCEngine RB video intro
+- RPI: Add I2C support
+- Use gamecontrollerdb.txt in ScummVM/ResidualVM
+- Wifi: improved storage in case of emergency shutdown
+- Bluetooth: detection of 8bitdo and other pads asking for "0000" pin code improved
+- Bump mk_arcade_joystick_rpi to hotkeybtn branch to get custom gpio features
+- Sega Mega CD bios updated no handle Genesis plus (picodrive compatible)
+
+## [6.0-rc2]
+- Add 8BitDo M30 gamepad support
+- Fix default GBA games metadata
+- Fix old core names in recalbox.conf (automatically renamed)
+- Add Xinmo controller to pre-configured pads/joyticks
+- Fix missing desmume_libretro.so
+- Fix reicast on XU4/X86
+- Fix virtual gamepad
+- Fix device handling to quit demo mode
+- Fix Kodi not starting with some gamepad
+- Fix retroarch core options not saved
+- Fix AROS bios with CD32
+- Fix Oricutron conflicts between 2nd player joystick and keyboard
+- Fix Dragonrise on Amiga (partially, you still need to HK+B and reset the emulator)
+- Fix descending sorts in gamelists
+- Improve randomness in demo mode
+
+## [6.0-rc1]
+- Major system upgrade. See https://github.com/buildroot/buildroot/blob/2018.02.3/CHANGES#L1-L1427 for the full log
+- KODI bumped to 17.6
+- Raspberry Pi3b+ and CM3 support
+- Joypads management updated, mostly impacting joypads advertising as a complete keyboard. You have to reconfigure your pad if it is acting strangely
+- Preconfigured gamepads file rewritten
+- Arcade GPIO driver upgraded: now support I2C and GPIO recopnfiguring from the command line
+- X86 now requires a CPU that can handle at least SSE and SS2
+- X86: add support for newer AMD GPU
+- Fix PS3/PS4 pads not working
+- Fix kodi configgen
+- Bump rpi kernel + firmware
+- gpio arcadedriver works again
+- Fix bug on bluetooth discover
+- Add Capcom RB video intro
+- Bump kodi.plugin.video.youtube to 6.3.1
+- Add support for Mayflash GameCube adapter
+- ES: better cyrillic display
+- Add ipega 9055 udev rule
+- New upgrade procedure to prepare for the future
+- ES: fix scraped folders display
+- ES: improve image loading
+- ES: now automatically reboots once the upgrade is ready
+- Atari 8 Bits: Added Atari 800 and Atari 5200 support - Thanks to dubbows!
+- MSX: Fixed Bluemsx core
+- Add 7z file support for many libretro cores
+- Docker build unified
+- "overlays" folder and roms subfolders automatically created
+- Fix bug on bluetooth discover
+- ES: fix pads buttons detection and configuration
+- Fix bluetooth detection on Odroid XU4
+- Update version of Theodore core (now supports TO8, TO8D, TO9, TO9+ and MO5)
+- Add homebrew game Mission: Liftoff (Theodore)
+- Fix BT recovery on XU4
+- advmame: add overlay possibility
+- MAME: Added mame2003-plus libretro core. A MAME078 version with added games support plus many fixes and improvements.
+- PokeMini: Add Pokémon Mini support
+- FreeIntv: Add Mattel Intellivision support
+- FreeChaF: Add Fairchild Channel F support
+- pc98: Add PC-98xx series support
+- Add Atari Jaguar on x86(_64) platforms
+- SNES9X: Add Satellaview and SuFami Turbo as own systems
+- Neo Geo CD: Added support with fbalpha emulator (TruRip ccd/sub/img recommended)
+- Bump FBA libretro to latest version => Romset 0.2.97.44
+- Bump AtariST emulator to december 2018 version
+- Add Oric/Atmos emulator (Oricutron, standalone)
+- Add MGT Sam Coupé emulator (Simcoupe, standalone)
+- c2/xu4: enable generic quirks for usb encoders like Xin-Mo
+- Bump DosBox to revision 4178 (December 2018)
+- Beetle PC-FX: Add NEC PC-FX support (x86, x86_64 and xu4)
+- MAME bios folders: Update hiscore/cheats for all MAME versions (courtesy of olivierdroid92)
+- Bump 4DO to support threaded DSP emulation & lightgun
+- Activate 4DO package on Rpi3
+- Bump Amiberry to 2.24 (SDL2). Compatible Odroid XU4.
+- Add Amiga CD32 system
+- Add AROS bios as default Amiga bios (2019 version)
+- Add configuration for static ip addresses on wifi interfaces
+- Bump ScummVM/ResidualVM (January 2019)
+- Bump almost all libretro cores
+- Package names updated (catsfc -> snes9x2005, pocketsnes -> snes9x2002, snes9x_next -> snes9x2010, pce -> mednafen_pce_fast, vb -> mednafen_vb, imame -> mame2000, mame2003 as core name instead of mame078, fbalpha instead of fba)
+- Improved log formatting
+- Add Demo Screensaver
+
+## [18.07.13] - 2018-07-13
+- Bump desmume to desmume2015
+- fix: SELECT as hotkey sometimes messy with arcade
+- ES: Arcade roms fullname in Netplay GUID
+- ES: No game launch if core doesn't match
+- ES: Game not listed in lobby if password protected
+- ES: remove netplay popup to prevent some crash
+- Wifi: options were not saved with nfs cifs or configurations - fixed
+- Daphne: joystick improvements / bug corrections
+- N64 rice: fix blank screen
+- N64 GlideN64 and other plugins: also fix blank screen
+- pifba: make sure it's only available for systems supporting it
+- Set the recalbox tag for netplay elsewhere
+
+## [18.06.27] - 2018-06-27
+- Adding introRecalboxEASports.mp4
+- Theme: updated "controls" gamelistview + bugfixes and enhancements
+- ES: updated translations
+- ES: Added Netplay option in menus + menus to add roms hashs in gamelists
+- ES: Added Netplay : GUI for client mode and button to launch as host
+- ES: Fixed clock not in local time
+- ES: Fixed old themes crash
+- ES: Option for popup position
+- ES: Help messages in popups
+- ES: Slider for popup duration
+- ES: Languages names in their own language
+- Bump kodi-plugin-video-youtube to 5.5.1
+- ES: Refactored gamepad configuration panel
+- ES: Update Emulator / Core selection process to avoid gui inception and to display default values
+- ES: Update font size on game metadata gui
+- ES: Remove dead code of RomsManager
+- ES: Make gamelist sort persistent
+- ES: Show folder content in detail panel
+- ES: Show single folder game as game in parent list
+- ES: Added an option to list folder content instead of folder name
+- ES: Only display available letter in JumpToLetter + Append figures
+- ES: Avoid reload of images if source doesn't changed
+- ES: Update Games lists from GameList menu
+- ES: Set Menu list in loop mode
+- ES: Fixed back button in gamelist
+- ES: Fixed back from game launch
+- ES: Fixed detailed panel missing when jumping to letter A
+- ES: Fixed set a game favorite for the first time (required two switches before)
+- ES: Stay is selected sub-folder when changing sort type / order in gamelist
+- recalbox-config.sh: added getEmulatorDefaults
+- Added fonts to support all languages
+- picodrive: partially rewrite package + re-enable for odroidc2
+- Add alternative methods to detect sound cards
+- Boot time optimization
+- Wifi: option to change region added to recalbox.conf - with wifi.region=FR fixes channel 12 issue for example
+- Old deprecated API removed, new API in development
+- more informations in support archives
+- sound: try to fix configuration loss on upgrade
+- Add message to warn before turning off Recalbox
+- Add Daphne system using Hypseus emulator
+- pin356ONOFFRESET: improved behaviour, more compatible with nespi+ case
+- Add splash screen duration option in recalbox.conf
+- Bump mGBA emulator and add it to gb and gbc for Super Game Boy support
+- Add Thomson TO + MO support with libretro core theodore, thank you zlika
+- linapple: support apple2.configfile=dummy to avoid overwriting configuration
+- Add Amstrad CPC core: crocods
+- New version of libretro-o2em now supports save states and rewind
+- Bump all libretro cores
+- Bump Retroarch to 1.7.3 + patch required parts
+- configgen: N64 back to fullscreen the real way, without forcing resolution
+- configgen: the video syntax "auto DMT 4 HDMI" now works for N64
+
+## [18.04.20] - 2018-04-20
+- ES: Added pop-ups
+- ES: Added tag in theme to force transition style
+- Bump kodi-plugin-video-youtube to 5.4.6
+- Bump Advancemame to 3.7 and spinner support added
+- ES: Fixed audio card change
+- fix: default font for ES and RA now in system
+- ES: Added dynamic change of volume and audio output in menu
+- ES: Added ubuntu_condensed.ttf as fallback font
+- ES: Added clock in main menu
+- ES: Added missing fav icons for Amigas 3DO and X68k
+- ES: Fixed reload of theme when gamelistonly=0
+- ES: Fixed HelpMessages not translated
+- ES: Add "QUIT" help message on main menu
+- revert PPSSPP version to previous one
+- more informations in support archives
+- upgrade: fix upgrading from custom branch to stable
+- recallog now logs even when share is not mounted
+- fix: wifi always activated on reboot even if disabled in ES
+- split share detection and upgrade process
+- mame2010: enable hiscores
+- fix: fmsx could not be selected as a MSX core
+- DosBox: resolve lag regression on RPI3 + strange behavior if no dosbox.bat
+- SDL2: fix bug on x86 which stucks ScummVM on splash screen
+- Odroid XU4: improved HDMI stability, boot.ini options
+- fix: Game&Watch core name not properly displayed
+- manager: update translations
+
+## [18.03.30] - 2018-03-30
+- moonlight: fix bad SDL2 GUID generation
+- Odroid-xu4: remove screeching noise at fan startup
+- configgen: fix videoconfig=auto
+- ES: fix slow transition from last to first system
+- Theme: various fix to recalbox-next
+- manager: fix credentials and menu
+- force the creation of a uuid file if it's missing
+
+## [18.03.16] - 2018-03-16
+- ES: new carousel mode ! Check UI Settings > Theme configuration with recalbox-next theme
+- ES: no more whiste screen of death when VRAM is filled
+- ES: new WiFi SSID selection box
+- ES: also scan music subfolders
+- ES: fix no music + wrong infos at boot
+- ES: fix black screen once back from emulator
+- ES: Kodi can only be started on the main systems screen
+- segacd: add chd as supported file format
+- sound: only set volume for playback devices
+- psx: fixed typo (mu3 instead of m3u file extension)
+- Moonlight: bump to 2.4.6, supports up to GFE 3.12 + can handle several GFE PC + rewrote scrape
+- recalbox.conf videomode now supports a new auto mode
+- ScummVM: Enable MT-32 emulation
+- DosBox: bump to r4076 + add a virtual keyboard
+- update the web manager (many fixes + many translations)
+- ES: games can be started from the webmanager
+- restored original splash video + added a few new ones, randomly played at boot
+- fix mame platform
+- PPSSPP: bump to 1.5.4
+- recalbox.conf: add a new auto mode for videomode
+- FBA Libretro: Bump to fix issues in some games
+- x68000: fix the StartDir path to improve support for multidisks
+- network: add the MUSIC keyword to network mounts
+
+## [18.02.09] - 2018-02-09
+- C2: disable picodrive for now until we fix compilation
+- New system : amiga for pi2 and pi3
+- Bump PPSSPP to 1.5.4
+- Added mame2010 libretro core on all boards excepted rpi0/1
+- X86: Added Nintendo DS support with libretro cores desmume and melonds
+- Replaced intro video for christmas release
+- Added ipega 9055 udev rule
+- Added quirk for micreal arcade dual
+- Added udev rule for the OUYA gamepad
+- Wifi is now started before accessing network shares
+- Added SHARP X68000 support with libretro core px68k, including publicly available bios files
+- Added Panasonic 3DO (XU4 / X86) with libretro core 4do
+- Odroid XU4: HDMI CEC disabled by default
+- Add ResidualVM 0.4.0 as a new emulator for ScummVM system (rev. a98cca7)
+- ScummVM: Allows to configure mapping of joystick buttons
+- ScummVM: Bump to 2.0.0 + allows to configure mapping of joystick buttons
+- DosBox: bump to r4067 (joystick configuration improvements) + enable IPX network
+- pin356 script updated to add timer and short/long press to manage emulator exit and reset (reset only for RA)
+
+- Odroid XU4: HDMI hot plug disabled by default
+
+## [17.12.02] - 2017-12-02
+- fixed steam controller service auto start, fixes lag in ES
+
+## [17.12.01] - 2017-12-01
+- solve erroneous logtime in recalbog.log
+- updated recalbox-config.sh for wifi scan
+- checkPackage: remove test case, new option to select packages to update
+- X86: boot from USB HDD (was ok on x86_64)
+- X86: Added 2 new PSX cores mednafen_psx and mednafen_psx_hw (enhanced version with OpenGL renderer)
+- Cores: bumped libretro cores - first step
+- Bumped retroarch to v1.6.9
+- Bumped ScummVM
+- Bumped DosBox to r4063
+- Dreamcast: add a VMU to each connected pad
+- Cores: bumped libretro cores - second step
+- Bluemsx: bumped core to last version + added .cas/.m3u files support
+- X86: added imlib2_grab to take command line screenshots
+- X86: Added boot menu with verbose option
+- Fix steam controller
+- Arcade: updated dat and readme files
+- N64: added mupen64plus GLideN64 video plugin on Odroid XU4 and C2
+- On rpi Kodi now boots using the default screen resolution
+- Retroarch: network commands fixed
+- Fix wifi bug when several networks are configured
+
+## [17.11.10.2] - 2017-11-10
+- Fixed hyperion libraries
+
+## [17.11.10] - 2017-11-10
+- New pads : Nintendo Wii U and Switch Pro Controller, 8bitdo FC30 Arcade (BT and USB), Thrustmaster T Mini Wireless
+- Pad: added Orange Controller default mapping
+- scummvm: support the .scummvm extension directories. Still need the .scummvm file inside
+- Added hyperion support
+- Add usbhid quirk for [GamepadBlock](https://blog.petrockblock.com/gamepadblock/)
+- Lynx: added libretro-handy core (by default)
+
+## [17.11.02] - 2017-11-02
+- add upgrade logs to the support archive
+- bugfix: all bt pads were forced a udev rule
+- increase BT detection time to 15s, log connect process
+- use the right device GUID for PPSSPP
+- now respect pad order in ES for PPSSPP
+- force SDL2 retrarch input driver for moga pro
+- moonlight: solve a configgen bug preventing from playing
+- Switch to versionning based on YEAR.MONTH.DAY (17.10.21) for the recalbox released on October 21th 2017
+- Fixed security option impossible to disable
+- X86: added Marvell Wifi-Ex 8801 USB & Intel Wireless Bluetooth firmwares
+- BlueMSX: changed default core-options (MSX2/60Hz/ym2413=enabled)
+- Pad: added Moga Pro 2 HID default mapping
+
+
+## [4.1.0] - 2017-10-13
+- Pad: added Microsoft Xbox One S & Elite default mapping
+- fix regression in splash video for pi
+- BT: no more permanent background scan, just powerup hci0
+- Splash video for Odroid XU4 and C2 + updated recalbox splash logo
+- Snes9x_next: added a rule to enable multitap support only if there is at least 3 gamepads connected
+- Bump virtual gamepad
+- Add a script to easily update various package types
+- PPSSPP: SNES-like pads can navigate in the menu + add retroarch-like combos
+- X86: added xrandr to be able to manually manage video outputs
+- X86: disabled screensaver (dpms)
+- Commodore 64: added libretro-vice core (by default)
+- X86: fixed issue that prevents retroarch shaders to work
+- X86: fixed issue that stucks OpenGL on version 2.1
+- Added DS4 and NES30 default config in es_inputs.cfg
+- X86: now able to flash and boot x86 images on internal hard drive
+- Updated libretro-cheats
+- reicast: bump + fix RTC clock
+- Bump retroarch to solve pad reordering issue
+- psp: saves now go to the right folder
+- Enhanced gliden64 video plugin configuration
+- Pad : added FuSa GamePad Version 0.3 (PSP homebrew) default mapping
+- Added noobs integration in archive images
+- New review upgrade system
+- New video render for retroarch: dispmanx (pi only)
+- Bumped Mupen64plus-GlideN64 video plugin to the Public Release 2.0
+- Fixed joystick sensitivity issue with mupen64plus
+- MAJOR BLUETOOTH CHANGE: users upgrading from 4.0 MUST PAIR AGAIN their controllers
+- BT: add a manual fix for xiaomi gamepad
+- deploys updates as docker containers
+- fixed a BT scan bug
+- bump configgen : remove moonlight config files before writing them + 5th moonlight player, remove commas in pad name
+- BlueMSX: added F3/F4 buttons on gamepad
+- BlueMSX: added .dsk files support
+- Amstrad CPC (libretro-cap32 core): Fixed gamepads support + 2 players support + GUI menu
+- fixed Nintendo Wiimote sending multiples events
+- fix saving recalbox.conf when the same key exists multiple times
+- Pad: add idroid default mapping
+- added recalbox as default CEC name on rpi
+- improve moonlight package
+- rewrite usb quirks
+- odroic c2: enable H264 hardware decoding
+- xarcade: delay the startup of the driver
+- xarcade: disable predefined combo keys
+- remove unwanted Kodi plugins
+- fix upgrade 4.0 -> 4.1 with the share on a FAT32 USB device
+- BT : improve startup, pairing and forgetting devices
+- Add support for RPI0-W
+- advancemame : bump to 3.4 and disable keyboard to prevent a crash when no keyboard is plugged
+- Timezone change fixed
+- increase the number of inodes for .img
+- Better upgrade information
+- Update CHANGELOG.md for nicer upgrade logs
+- Show progression while downloading an update
+- fix lynx core name
+- appleII: fix known file extensions
+- adding new kernel patch to support natively xinmo 20pins usb encoder
+- fix webmanager2's dependencies
+- fix sound regression since handling of multiple cards
+- Fix muted sound on boot
+- samba: definitely remove printer support
+- improve CI output + better error logging on failed build
+- fix gamecon 1.2
+- configgen: scummvm: added fullscreen option
+- configgen: libretroConfig.py: would crash when retroarchcustom.cfg didn't exist
+- configgen: added n64 to systems not supporting rewind
+- configgen: Fix PPSSPP for any pad
+- recalbox-manager2: add new locales, stop and restart ES works again
+- Solve a bug on .img compression
+- Automatically update XBox360 pads configuration for ES
+- Force a 2GB root size for .img
+- Compress .img in xz
+- Don't forget bluetooth paired devices on upgrade
+- Proper restart of Emulationstation
+- add locales to recalbox-manager2
+- Improve sound management when running multiple sound cards
+- Bumped recalbox-manager2 to v2.0
+- Carefully compare versions to verify if an update is available
+- Add a generic SNES pad configuration
+- Add Logitech F310 Direct Input mode configuration
+- Add Logitech F310 XInput mode (which is recommended) configuration
+- Upgrade retroarch config files
+- Added Latvian support
+- Added Luxembourgish support
+- fix missing roms + configs subfolders creation
+- fix recalbox.conf not being upgraded
+- improve BT connectivity
+- fixed black screen on systems with new configgen version
+- added Czech language support
+- run v2 of manager if version not found in recalbox.conf
+- fixed emulationstation.forcebasicgamelistview
+- add tft waveshare 3.2 and 3.5 overlays + fbcp program to support them
+- add pwm-audio-pi-zero overlay to get audio thanks to PWMs through GPIO Pins 18 and 13 on an Pi Zero equivalent to dtoverlay=pwm-2chan,pin=18,func=2,pin2=13,func2=4
+- new web manager
+- add pwm-audio-pi-zero overlay to get audio thanks to PWMs through GPIO Pins 18 and 13 on an Pi Zero equivalent to dtoverlay=pwm-2chan,pin=18,func=2,pin2=13,func2=4
+- add rgb-pi overlay
+- fixed rgb-pi overlay
+- checksum on upgrades, progression percentage much more accurate
+- Bump to Bump rpi-userland 8e84b9003d8259472f9c79b385443b1b4975203e and rpi-firmware b365edad4e75126fb9bfee2325652758407e4f74 to change be able to change video résolution on the fly via the vcgencmd command. This will be very useful the get pixel perfect on rgb screen
+- Fixing BT firmware copy for Realtek BT devices (81xx 87xx and 88xx)
+- Fixing Makelfiles for compilation of libretro-lutro for the bump to release 2377dd37ad3bd37ddef9fc37742bba2531a78407
+- Bump retroarch to last release due to integration of libretro-imageviewer in its cores, and delation of the libretro-imageviewer repos
+- Update Mame2003 core to get the mame2003-skip_warnings and avoid splash screen
+- New emulator : PPSSPP
+- Add Mayflash NES/SNES and SEGA SATURN in usbhid.conf
+- Added omxplayer to enable Introduction video
+- Updated recalbox-configgen to version 4.1.X
+- Added linapple-pie to recalbox-rpi3_defconfig
+- Added support for vice 2.4.24. This means support for commodore c64 and other commodore systems
+- Added theme for commodore c64
+- Added two demo ROMs for commodore c64
+- Add linapple specific parameters to start fixing an issue.
+- Added user's configuration files upgrade
+- Merged buildroot upstream
+- Added retroachievements hardcore mode
+- Add omxplayer to rpi2 & rpi3 defconfig
+- Add Kodi default plugins/repositories
+- Improved S02splash script for video splash
+- linapple-pie download redirected to LaurentMarchelli
+- passed to gcc5
+- Added pgrep to busybox for omxplayer extensions
+- New video version and splash video now stopped when kodi is started
+- Added custom ratio per game option
+- Dbus implementation to have fade out effect on splash video
+- Added Witty Pi powerswitch support with Wiring Pi.
+- Network connection manager : ethernet configuration on wire connection
+- Network connection manager : multiple wifi configurations
+- Wifi : open/wep/wpa/wpa2
+- New emulator : reicast
+- Bumped retroarch to v1.3.4
+- Added retroachievements support to fceunext core
+- Reicast : add multiplayer support
+- Bump moonlight-embedded to 2.2.3, adds support for GFE 3.3
+- Added enet library for moonlight-embedded-2.2.0
+- Solved a bug on xarcade where B and HOTKEY were sending the same event
+- Slide transition by default in ES
+- Power management switch support (power,reset and LED) for pin 3/5/6
+- Add ifconfig -a and /boot/recalbox-boot.conf in recalbox-support.sh
+- S99Custom now trasmits its init parameter to custom.sh
+- Add ipega 9021 rules
+- ES now shutdowns the system
+- share/roms/saves/bios available via a network point
+- bumped SDL to 2.0.4
+- disable multitouch axis in SDL 2.0.4
+- linux kernel bumped to 4.4.13
+- Add new Traditional Chinese Language
+- Add DosBox 0.74 (rev 3989) with specific patches: SDL2, with mapping of mouse and all axis of joysticks
+- Add lutro extension
+- Add a recalbox.conf option to set a video mode only for es
+- Add Catalan translation
+- Check space left before update
+- Added ColecoVison support to bluemsx libretro core
+- Added the alternative N64 core GLupeN64 on rpi2/rpi3
+- Added IPF format support to libretro-hatari (atarist ST)
+- Reenable mp3 support for SDL2 mixer.
+- Updated libretro-fba core from FBA 0.2.97.37 to FBA 0.2.97.39
+- Added Mad Catz C.T.R.L.R udev rules
+- Add configs to recalbox-support.sh
+- Add firmwares ASUS BT400 and Qualcomm Atheros AR3011 BT3.0
+- S50dropbear kills existing SSH connection at stop
+- Add support for PS4 Dualshock4 bluetooth controllers
+- Updated gamecon driver from 1.0 to 1.2
+- Solve the loading of the DB9 driver
+- N64 configgen shouldn't crash anymore if some keys are not mapped
+- Add xin-mo 20pins players and ipega 9028
+- Add new languages : arabic dutch greek korean norwegian norwegian bokmål polish
+- Support PI3 internal bluetooth via bluez5
+- Add USB PS2 : GreenAsia Electronics
+- PSX: .bin extentions removed (use .cue instead)
+- Enable highscores for fba_libretro
+- Add mame parent only dat file
+- Add ipega pg 9055 rules
+- Add mame parent only dat file
+- Add xin-mo 18pin, mayflash N64 and correction usbhid
+- Add usbhid for Retrobit Genesis to PC USB Adapter
+- new arcade emulator: AdvanceMame
+- 7z support for fba_libretro
+- Synced with buildroot 2016.11
+- Added GNU diffutils
+- Now shows changelog when updating the system
+- Added snes9x libretro core (MSU-1 support)
+- Patched xpad driver to support Xbox One S / Elite controllers in USB mode
+- Patched xpad driver to fix the blinking xbox leds
+- Build on gitlab ci
+- Added emulationstation.hidesystemview option in recalbox.conf to hide system view
+- Added emulationstation.selectedsystem option in recalbox.conf to select a system on boot
+- Added emulationstation.bootongamelist to boot on the system gamelist
+- Added emulationstation.gamelistonly to improve boot time
+- Bumped libretro cores on last version
+- Added Japanese, Russian and Hungarian languages
+- Bumped virtualgamepads version - virtualkeyboard now available
+- Add usb encoder 3H-Dual-Arcade, Mayflash dreamcast adapter
+- Added "Joe Contre Les Pharaons" Amstrad CPC homebrew
+- Added RPI3 overclock presets + warning popup if TURBO/EXTREM
+- Add support for smb and upnp protocols in Kodi
+- Removed xboxdrv driver - broken since kernel's bump
+- Deactivated rumble support in pcsx core - causes endless vibrations problems
+- Bumped pcsx core - added an option to enable bios splashscreeen (may broke some games - disabled by default)
+- Add usbhid quirk for AJ 2 USB 2.4G sans fil manettes (ShanWan Twin USB Joystick PS3)
+- Added ScummVM on X86, X86_64, odroid c2 and odroid xu4
+
+## [4.0.0-beta5] - 2016-08-13hs the ratio issue in mame.
+- Improved pads and gpio support for moonlight
+- Change location of PM2_HOME to fix a bug with API daemon
+- Disable printer sharing to reduce log output
+- Prevent MacOS from adding its .DS_store
+
+## [4.0.0-beta4] - 2016-06-19
+- Update to moonlight-embedded-2.2.1 (but still displays 2.2.0 when running), adds support for GFE 2.11
+- Added enet library for moonlight-embedded-2.2.0
+- Solved a bug on xarcade where B and HOTKEY were sending the same event
+- Slide transition by default in ES
+- Power management switch support (power,reset and LED) for pin 3/5/6
+- Add ifconfig -a and /boot/recalbox-boot.conf in recalbox-support.sh
+- S99Custom now trasmits its init parameter to custom.sh
+- Bumped retroarch to v1.3.4
+- Add ipega 9021 rules
+- Added stat in busybox
+- Added integer scale (Pixel Perfect) option
+
+## [4.0.0-beta3] - 2016-04-19
+- Xarcade2jstick button remapped + better support of IPAC encoders
+- Added IPAC2 keyboard encoder
+- Patched xpad driver to support Xbox One controllers in USB mode
+- Updated gamepads inputs to support moonlight
+- Fix some kodi bugs about joysticks
+- Added OpenGL + scalers supports to scummvm
+- Power management switch support for pin 5/6
+- Fix freeze issue with libretro-mgba core
+- Added megatools
+- Added new recalbox 4.0.0 systems
+- Added crt-pi shaders
+- Fix Namco/Taito games in mame2003
+- Added kempston joystick by default for zxspectrum
+- Updated scummvm to version 1.8
+- Added VIM
+- Added recalbox-themes package
+- Recalbox theme by default
+
+## [4.0.0-beta2]
+- Added rpi3 support (without bluetooth)
+- Added support for power management boards
+- Added rpi gpio and wiringpi
+- Added OOB remote controls
+- Fixed keyboard issue in ES
+- Fixed retroachievement support on picodrive and fceumm libretro cores
+- Fixed system locales
+- Updated 8bitdo gamepads
+- Bumped to moonlight-embedded-2.1.4
+- Overclock set to none now delete lines in config.txt
+- Improved keyboard encoders support
+- Fixed an issue concerning ISO loading taking too long
+
+## [4.0.0-beta1]
+- new update process
+- new languages
+- external storage choice
+- favourite system
+
+## [3.3.0-beta17]
+- New version of xboxdrv
+- Corrected 8bitdo mapping
+- Added wiringpi
+- switch USBHID to kernel module for gamepad encoders
+- linapple-pie (Apple ][ Emulator) added to rpi2, rpi1 need to be tested
+
+## [3.3.0-beta16] - 2015-11-24
+- Corrected kodi start
+- Bumped to moonlight-embedded-2.1.2
+
+## [3.3.0-beta15] - 2015-11-22
+- Corrected sound issues with IREM games on libretro-mame2003 core
+- Updated libretro-fba core from FBA 0.2.97.36 to FBA 0.2.97.37
+- Added recalbox api
+- Added Chinese and Turkish
+- Added samba switch in recalbox.conf
+- Added WiiMote support
+- Added Kodi controller support
+- Corrected controller <-> player attribution
+- Added moonlight system support, with roms
+- Added new switch in recalbox.conf for ssh and virtual gamepads
+
+## [3.3.0-beta14] - 2015-11-01
+- Corrected recalbox manager
+
+## [3.3.0-beta13] - 2015-11-01
+- Added recalbox-manager
+- Added custom ratio support
+
+## [3.3.0-beta12] - 2015-10-31
+- Added EmulationStation shutdown screen
+- Corrected select to quit shortcut
+
+## [3.3.0-beta11] - 2015-10-31
+- Corrected shadersets bug
+
+## [3.3.0-beta10] - 2015-10-31
+- Added GLideN64 video plugin
+- Added mame2003 libretro as default mame emulator
+- Added system.emulators.specialkeys to select the emulators special keys functions
+- Updated snes9x core (fix the bomberman 5 freeze)
+- Added Saitek controllers support
+- Added select shortcut in menu for quick restart / shutdown
+- Added Basque language
+
+## [3.3.0-beta9] - 2015-10-11
+- Fixed Moonlight theme for zoid
+- Added splashscreen for long reboots
+- Added mplayer and jscal
+- Updated atari 2600 stella core for 2 players support
+- Updated fba libretro for R3 diag menu
+- Added xbox 360 official wireless dongle support OOTB
+- Added fullscreen/ratio/widescreen hack settings for n64
+
+## [3.3.0-beta8] - 2015-10-06
+- Removed avahi daemon
+- Fixed Moonlight theme
+
+## [3.3.0-beta7] - 2015-09-20
+- Updated themes + added moonlight themes
+- Updated .dat and infos about fba_libretro romset
+- Updated recalbox.conf with list of cores not supporting rewind
+- Added system.es.menu option
+- Added Moonlight
+- Added kodi webserver on port 8081
+- Added auto-connection for bluetooth controllers
+
+## [3.3.0-beta6] - 2015-09-15
+- More 8bitdo support
+- Corrected retro shaderset for mastersystem
+- Corrected kodi autostart
+
+## [3.3.0-beta5] - 2015-09-13
+- Added scanlines and retro shadersets
+- Added name based sdl2 driver switch (8bitdo support)
+- Added cavestory support
+- Added mad and vorbis support in scummvm
+- Refactored ES recalbox.conf management
+
+## [3.3.0-beta4] - 2015-09-05
+- Corrected start kodi with X
+- Added NES30 Pro Support
+- Added SFC30 Support
+- Ignore cheats for updates
+
+## [3.3.0-beta3] - 2015-08-29
+- Added xiaomi bluetooth controller config
+- Added default videomode that doesn't change the resolution while launching games
+- Added 16/10 support and 16/10 is set as default for wswan
+- Added recalbox version of Virtual Gamepad
+- Added retroarch input driver autoconfig based on guid
+- Added doom 1 shareware
+
+## [3.3.0-beta2] - 2015-08-23
+- Changed update repo and system
+
+## [3.3.0-beta1] - 2015-08-22
+- Added Wonderswan Color libretro emulator
+- Added Lutro libretro core (LUA framework)
+- Added NeoGeo as a separated system
+- Added NeoGeo Pocket Color libretro emulator
+- Added Vectrex libretro emulator
+- Added Game And Watch libretro emulator
+- Added Lynx libretro emulator
+- Added PRBoom libretro
+- Modif zoid theme
+- Patched kernel to support retrobit controllers
+- Patched kernel to support 4NES4SNES controllers
+- Patched kernel to fix the blinking xbox led. Only on rpi2
+- Added gpu_mem for 256mo rpi1
+- Unified the branches rpi and rpi2
+- Updated buildroot sources
+- Added libretro cheats
+- Added favorites to emulationstation (from kaptainkia es modifications)
+- Added mk_arcade_joystick_rpi with one more button
+- Added adafruit-retrogame utility
+- Added recalbox-configgen support
+- Added sixad driver choice
+- Added SuperGrafx libretro emulator
+- Added NXengine libretro core (cavestory)
+- Added Atari 7800 libretro emulator
+- Added hostname in recalbox.conf
+- Added recalbox-system (recalbox.arch file)
+- Changed bash as default shell
+- Corrected update system
+- Added Tgbdual libretro core
+- Added Miroof's Virtual Gamepads
+- Added silent install
+
+## [3.2.11] - 2015-03-24
+- Corrected issues with controllers with idientical names
+- Added zoid theme
+
+## [3.2.10] - 2015-03-17
+- Corrected itialian translation
+- Recompiled modules for 3.19
+
+## [3.2.9] - 2015-03-15
+### Changed
+- Added fba emulator switch
+- Added snes9x, catsfc, pocketsnes switch
+- Added virtualboy platform
+- Fixed : buttons on axis in retroarch config
+- Added timestamps in logs
+- Fixed xboxdrv pacakge
+- Bumbep to Kodi-14.2-rc1
+- Added clrmame info and dat files for mame and fba
+- Added fbalibretro system
+- Added italian translation
+
+## [3.2.8] - 2015-03-09
+### Changed
+- Added switches in recalbox.conf
+    - kodi x button switch
+    - game resolution switch
+    - update check switch
+    - xboxdrv switch
+    - localtime switch
+- Fixed : mupen rice plugin package
+- Fixed : xboxdrv pacakge
+- Added localtime support
+- Added mgd extension for snes
+- Fixed : L2 + R2 mapping in retroarch
+- Fixed : only axis based joystick configuration
+- Changed all package to specific versions
+- Bumped to 3.19 for rpi2
+- Bumped to last userland and firmware
+- Kodi PVR support
+- Added cifs support
+- Added ipv6 support
+- Fixed : hats for specials key on retroarch
+
+## [3.2.7] - 2015-03-03
+- Fixed boot process
+
+## [3.2.6] - 2015-03-03
+### Changed
+- Added z64 extenson for n64
+- Added xbox360 wireless defaut configuration
+- Fixed : power management of ew-7811un
+- Added kodi mysql support
+- Fixed nfs startup script
+
+## [3.2.5] - 2015-03-03
+### Changed
+- Added samba socket option for large files copy
+- Added db9 driver package
+- Added gamecon driver package
+- Added new setting configuration file (recalbox.conf)
+- Added new startup system
+- Fixed : ssid with space from emulationstation
+- Fixed : ntfs automount

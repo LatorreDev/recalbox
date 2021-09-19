@@ -1,0 +1,12 @@
+--- ppsspp/CMakeLists.txt.orig	2020-05-28 22:34:43.393435728 +0200
++++ ppsspp/CMakeLists.txt	2020-05-28 22:34:46.709408955 +0200
+@@ -197,6 +197,9 @@
+ 
+ include_directories("${CMAKE_SOURCE_DIR}")
+ 
++include_directories(/opt/vc/include /opt/vc/lib/libzip/include)
++link_directories(/opt/vc/lib)
++
+ if(USING_EGL)
+ 	add_definitions(-DUSING_EGL)
+ endif()

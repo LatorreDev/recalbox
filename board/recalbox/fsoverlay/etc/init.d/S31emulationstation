@@ -1,0 +1,82 @@
+#!/bin/sh
+#
+#
+
+systemsetting="recalbox_settings"
+
+PIDFILE=/var/run/emulationstation.pid
+ESBIN=/usr/bin/emulationstation-starter
+INIT_SCRIPT=$(basename "$0")
+
+scr_msg() {
+	echo "██████╗ ██████╗ █████╗ █████╗ ██╗   ██████╗  █████╗ ██╗  ██╗" > /dev/tty0;
+	echo "██╔══██╗██╔═══╝██╔═══╝██╔══██╗██║   ██╔══██╗██╔══██╗╚██╗██╔╝" > /dev/tty0;
+	echo "██████╔╝████╗  ██║    ███████║██║   ██████╔╝██║  ██║ ╚███╔╝ " > /dev/tty0;
+	echo "██╔══██╗██╔═╝  ██║    ██╔══██║██║   ██╔══██╗██║  ██║ ██╔██╗ " > /dev/tty0;
+	echo "██║  ██║██████╗╚█████╗██║  ██║█████╗██████╔╝╚█████╔╝██╔╝ ██╗" > /dev/tty0;
+	echo "╚═╝  ╚═╝╚═════╝ ╚════╝╚═╝  ╚═╝╚════╝╚═════╝  ╚════╝ ╚═╝  ╚═╝" > /dev/tty0;
+	echo "                                                                 " > /dev/tty0;
+	echo " Plase wait! DO NOT power off until the system is completely" > /dev/tty0;
+	echo " shut-down or you may damage your Recalbox." > /dev/tty0;
+}
+
+case "$1" in
+  start)
+	enabled="`$systemsetting -command load -key system.es.atstartup`"
+	videoMode="`$systemsetting -command load -key system.es.videomode`"
+	if [ "$enabled" != "0" ];then
+		# get output video size
+		fbdevHeight=$(cut -d, -f2 /sys/class/graphics/fb0/virtual_size)
+		# In case the logo has been removed, let's put it back again
+		if [ "${fbdevHeight}" -le 320 ] ; then
+			fbv2 -f -i /recalbox/system/resources/splash/240p/logo-version.png
+		else
+			fbv2 -f -i /recalbox/system/resources/splash/logo-version.png
+		fi
+
+		echo $videoMode | grep -qE "(CEA|DMT) [0-9]{1,2} (HDMI|DVI)"
+		[ $? = "0" ] && tvservice -e "$videoMode"
+		settings_lang="`$systemsetting -command load -key system.language`"
+		recallog -s "${INIT_SCRIPT}" -t "ES" "starting emulationstation with lang = $settings_lang"
+		if grep -q rpi4 /recalbox/recalbox.arch; then
+			HOME=/recalbox/share/system LANG="${settings_lang}.UTF-8" SDL_VIDEO_GL_DRIVER=/usr/lib/libGLESv2.so SDL_VIDEO_EGL_DRIVER=/usr/lib/libEGL.so SDL_NOMOUSE=1 start-stop-daemon -S -q -m -p /var/run/emulationstation.pid  --exec "$ESBIN" &
+		elif grep -q odroidxu4 /recalbox/recalbox.arch; then
+			HOME=/recalbox/share/system LANG="${settings_lang}.UTF-8" SDL_VIDEO_GL_DRIVER=/usr/lib/libGLESv2.so SDL_VIDEO_EGL_DRIVER=/usr/lib/libEGL.so SDL_VIDEODRIVER=kmsdrm_legacy SDL_NOMOUSE=1 start-stop-daemon -S -q -m -p /var/run/emulationstation.pid  --exec "$ESBIN" &
+		else
+			HOME=/recalbox/share/system LANG="${settings_lang}.UTF-8" SDL_VIDEO_GL_DRIVER=/usr/lib/libGLESv2.so SDL_VIDEO_EGL_DRIVER=/usr/lib/libGLESv2.so SDL_NOMOUSE=1 start-stop-daemon -S -q -m -p /var/run/emulationstation.pid  --exec "$ESBIN" &
+		fi
+	fi
+	;;
+  stop)
+	recallog -s "${INIT_SCRIPT}" -t "ES" "Stopping Emulationstation"
+	start-stop-daemon -K -q -p "${PIDFILE}"
+	clear > /dev/tty0
+	(echo;echo;echo;echo;echo) > /dev/tty0
+	scr_msg "Please DO NOT power off Recalbox, PLEASE WAIT !!!"
+	;;
+  restart|reload)
+	"$0" stop
+	if [ -f "${PIDFILE}" ] ; then
+		ESPID=`cat /var/run/emulationstation.pid 2>/dev/null`
+		while `"$0" status > /dev/null` ; do
+			sleep 0.1
+		done
+	fi
+	"$0" start
+	;;
+  status)
+	ESPID=`cat ${PIDFILE} 2>/dev/null`
+	if [ -f "${PIDFILE}" ] && `ps | grep -qE "^[[:space:]]*${ESPID}"` ; then
+		echo "Emulationstation is running (pid `cat /var/run/emulationstation.pid`)"
+		exit 0
+	else
+		echo "Emulationstation is stopped"
+		exit 1
+	fi
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?

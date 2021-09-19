@@ -1,0 +1,294 @@
+# GitLab CI configuration file
+#
+# To run this locally (requires `gitlab-runner`):
+#   $ gitlab-runner exec docker <job_name>
+
+image: docker:latest
+
+.only-default: &only-default
+  only:
+    - master
+    - merge_requests
+    - tags
+
+stages:
+  - lint
+  - build
+  - release
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+
+# Lint
+
+.lint_template: &lint_definition
+  stage: lint
+  variables:
+    GIT_SUBMODULE_STRATEGY: none
+  <<: *only-default
+
+lint package license:
+  <<: *lint_definition
+  image: "docker:latest"
+  script:
+    - apk update && apk add bash
+    - bash test/lint/package-licenses.sh
+
+lint config-files:
+  <<: *lint_definition
+  before_script:
+    - apk add --update --no-cache libxml2-utils
+  script: test/lint/config-files
+
+lint buildroot:
+  <<: *lint_definition
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+  image: python:2-alpine
+  before_script:
+    - pip install six
+  script: test/lint/buildroot
+
+lint commits:
+  <<: *lint_definition
+  image: node:14.11
+  before_script:
+    - npm install -g @commitlint/cli @commitlint/config-conventional
+  script: test/lint/commits
+
+# lint beta-tests:
+#   <<: *lint_definition
+#   only:
+#     - tags
+#   script:
+#     - if grep TESTING.md -q -e '^- \[ \]';then echo "Beta test not over" && exit 1; fi
+#   allow_failure: true
+
+lint changelog:
+  <<: *lint_definition
+  except:
+    - master
+    - tags
+    - schedules
+  before_script:
+    - apk update && apk add git
+  script:
+    - git remote show target || git remote add target "${CI_MERGE_REQUEST_PROJECT_URL}"
+    - git fetch target "${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}"
+    - if git diff --exit-code "target/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}" -- CHANGELOG.md; then echo "You forgot the CHANGELOG.md" && exit 1; fi
+  
+# Build
+
+.build_template: &build_definition
+  stage: build
+  variables:
+    ARCH: arch # to build (no default)
+  <<: *only-default
+  before_script:
+    - apk update && apk add git
+    - source scripts/release/functions.sh
+  script:
+    # Version generation
+    - set -euo pipefail
+    - export RECALBOX_VERSION="${CI_COMMIT_TAG:-$(date '+%Y/%m/%d') ${CI_COMMIT_REF_SLUG} (${CI_PIPELINE_ID})}"
+    - cp "${YOUTUBE_API_KEYS}" "./api_keys.json"
+    # Release Note generation
+    - echo -e "Recalbox ${RECALBOX_VERSION}\n" > /tmp/RELEASE-NOTES.md
+    - awk '/^## Version/ { flag=!flag; count+=1; next } flag && count < 2 {print}' RELEASE-NOTES.md >> /tmp/RELEASE-NOTES.md
+    - mv /tmp/RELEASE-NOTES.md RELEASE-NOTES.md
+    - cat RELEASE-NOTES.md
+    # Build
+    - docker build -t "recalbox-${ARCH}" .
+    - WORKDIR="$(pwd)" CCACHE="true" OUTPUTDIR="$(pwd)/output"
+    - mkdir -p ${OUTPUTDIR} && echo "${CI_JOB_ID}" > "${OUTPUTDIR}/.building"
+    - docker run --rm --tmpfs /tmp:exec -v "${WORKDIR}:/work" -v "${OUTPUTDIR}:/work/output" -v "/recalbox-builds/dl:/share/dl" -v "/recalbox-builds/ccaches/ccache-${ARCH}:/share/ccache" -e "ARCH=${ARCH}" -e "GITLAB_TOKEN_THEMES=${GITLAB_TOKEN_THEMES}" -e "RECALBOX_VERSION=${RECALBOX_VERSION}" -e "RECALBOX_CCACHE_ENABLED=${CCACHE}" "recalbox-${ARCH}" 2>&1 | tee build.log | grep '>>>' || tac build.log | grep '>>>' -m 1 -B 9999 | tac
+    - echo $?
+    # Dist
+    - export DIST_DIR="dist/${ARCH}"
+    - mkdir -p "${DIST_DIR}"
+    - cp ${OUTPUTDIR}/images/recalbox/* "${DIST_DIR}"
+    - echo "${RECALBOX_VERSION}" >> "${DIST_DIR}/recalbox.version"
+    - cp ${WORKDIR}/CHANGELOG.md "${DIST_DIR}/recalbox.changelog"
+    - cp ${WORKDIR}/RELEASE-NOTES.md "${DIST_DIR}/recalbox.releasenotes"
+    - uploadFolderToBucket "${AWS_ACCESS_KEY_ID}" "${AWS_SECRET_ACCESS_TOKEN}" "recalbox-builds-artifacts" "dist" "${CI_PIPELINE_ID}"
+    - rm -rf "${DIST_DIR}" "${OUTPUTDIR}/images/recalbox"
+  after_script:
+    - if [ "${CI_JOB_ID}" = "$(cat /recalbox-builds/outputs/output-${ARCH}/.building)" ];then rm /recalbox-builds/outputs/output-${ARCH}/.building;fi
+  artifacts:
+    name: dist-${ARCH}-${CI_PIPELINE_ID}
+    when: always
+    paths:
+      - build.log
+    expire_in: 2 mos
+  tags:
+    - build
+
+
+build x86_64:
+  <<: *build_definition
+  when: manual
+  variables:
+    ARCH: 'x86_64'
+build rpi4:
+  <<: *build_definition
+  when: manual
+  variables:
+    ARCH: 'rpi4'
+build odroidgo2:
+  <<: *build_definition
+  when: manual
+  variables:
+    ARCH: 'odroidgo2'
+build x86:
+  <<: *build_definition
+  when: manual
+  variables:
+    ARCH: 'x86'
+build odroidxu4:
+  <<: *build_definition
+  when: manual
+  variables:
+    ARCH: 'odroidxu4'
+build rpi1:
+  <<: *build_definition
+  when: manual
+  variables:
+    ARCH: 'rpi1'
+build rpi2:
+  <<: *build_definition
+  when: manual
+  variables:
+    ARCH: 'rpi2'
+build rpi3:
+  <<: *build_definition
+  when: manual
+  variables:
+    ARCH: 'rpi3'
+
+# Schedules (nightly)
+nightly build x86_64:
+  <<: *build_definition
+  only:
+    - schedules
+  variables:
+    ARCH: 'x86_64'
+nightly build rpi4:
+  <<: *build_definition
+  only:
+    - schedules
+  variables:
+    ARCH: 'rpi4'
+nightly build odroidgo2:
+  <<: *build_definition
+  only:
+    - schedules
+  variables:
+    ARCH: 'odroidgo2'
+nightly build x86:
+  <<: *build_definition
+  only:
+    - schedules
+  variables:
+    ARCH: 'x86'
+nightly build odroidxu4:
+  <<: *build_definition
+  only:
+    - schedules
+  variables:
+    ARCH: 'odroidxu4'
+nightly build rpi1:
+  <<: *build_definition
+  only:
+    - schedules
+  variables:
+    ARCH: 'rpi1'
+nightly build rpi2:
+  <<: *build_definition
+  only:
+    - schedules
+  variables:
+    ARCH: 'rpi2'
+nightly build rpi3:
+  <<: *build_definition
+  only:
+    - schedules
+  variables:
+    ARCH: 'rpi3'
+
+
+### Release
+
+.release_template: &release_definition
+  stage: release
+  tags:
+    - release
+  variables:
+    DEPLOY_TYPE: type of the deployment (prod, review)
+    BUCKET: Bucket to deploy to
+  before_script:
+    - source scripts/release/functions.sh
+    - apk add --update-cache --no-cache xz bash
+  script:
+    - downloadBucketFolderTo "${AWS_ACCESS_KEY_ID}" "${AWS_SECRET_ACCESS_TOKEN}" "recalbox-builds-artifacts" "builds" "${CI_PIPELINE_ID}"
+    - mkdir release
+    - ls -la builds
+    - ./scripts/release/generate_external_installer_assets.sh --images-dir builds --destination-dir release
+    - echo "Releasing files"
+    - mv builds/* release
+    - uploadFolderToBucket "${AWS_ACCESS_KEY_ID}" "${AWS_SECRET_ACCESS_TOKEN}" "${BUCKET}" "release" "latest"
+    - |
+      if [ "${DEPLOY_TYPE}" == "prod" ];then
+        restartProxiesAfterUpgrade "${PROXIES_SSH_KEY}" "${PROXIES_SSH_USER}"
+        copyFolder "${AWS_ACCESS_KEY_ID}" "${AWS_SECRET_ACCESS_TOKEN}" "${BUCKET}/latest/" "${BUCKET}/${CI_COMMIT_TAG}/"
+      fi
+
+release prod:
+  <<: *release_definition
+  only:
+    refs:
+      - tags
+    variables:
+      - $CI_COMMIT_TAG !~ /beta/i
+  when: manual
+  variables:
+    DEPLOY_TYPE: prod
+    BUCKET: recalbox-archive-stable
+  environment:
+    name: prod
+    url: https://download.recalbox.com
+
+release beta:
+  <<: *release_definition
+  only:
+    - tags
+  when: manual
+  variables:
+    DEPLOY_TYPE: review
+    BUCKET: recalbox-archive-beta
+  environment:
+    name: beta/${CI_COMMIT_REF_SLUG}
+
+
+release nightly:
+  <<: *release_definition
+  only:
+    - schedules
+  variables:
+    DEPLOY_TYPE: review
+    BUCKET: recalbox-archive-nightly
+  environment:
+    name: nightly/${CI_COMMIT_REF_SLUG}
+
+
+release branch:
+  <<: *release_definition
+  <<: *only-default
+  when: manual
+  only:
+    - merge_requests
+  variables:
+    DEPLOY_TYPE: review
+    BUCKET: recalbox-archive-branch
+  environment:
+    name: branch/${CI_COMMIT_REF_SLUG}

@@ -1,0 +1,12 @@
+config BR2_PACKAGE_LIBRETRO_MAME2015
+	bool "libretro-mame2015"
+	depends on BR2_PACKAGE_RETROARCH
+	depends on BR2_INSTALL_LIBSTDCPP
+	select BR2_PACKAGE_ZLIB
+	help
+	  A libretro mame2015 core for ARM - Based on MAME 0.139.
+
+	  http://www.libretro.com
+
+comment "LIBRETRO_MAME2015 needs a toolchain w/ C++"
+	depends on !BR2_INSTALL_LIBSTDCPP

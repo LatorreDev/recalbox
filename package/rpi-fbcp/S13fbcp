@@ -1,0 +1,47 @@
+#!/bin/sh
+# Start/Stop fbcp 
+
+PIDFILE=/var/run/fbcp.pid
+NAME="S13fbcp"
+RUN_AS=`id -u root`
+CMD=/usr/bin/fbcp
+
+systemsetting="recalbox_settings"
+
+do_start() {
+    recallog -s "${INIT_SCRIPT}" -t "CONFIG" "... Starting : system.fbcp.enabled is set to 1"
+    start-stop-daemon --start --background --user $RUN_AS --pidfile $PIDFILE --make-pidfile --chuid $RUN_AS --startas $CMD -- -n
+}
+
+do_stop() {
+    start-stop-daemon --stop --pidfile $PIDFILE
+}
+
+
+case "$1" in
+start)
+    enabled="`$systemsetting  -command load -key system.fbcp.enabled`"
+    if [ "$enabled" != "0" ];then
+        recallog -s "${INIT_SCRIPT}" -t "CONFIG" "Starting $NAME"
+        do_start
+    else
+        recallog -s "${INIT_SCRIPT}" -t "CONFIG" "Will not start $NAME : system.fbcp.enabled is set to 0"
+    fi
+
+    
+    ;;
+stop)
+    recallog -s "${INIT_SCRIPT}" -t "CONFIG" "Stopping $NAME"
+    do_stop
+    ;;
+restart)
+    recallog -s "${INIT_SCRIPT}" -t "CONFIG" "Restarting $NAME"
+    do_stop
+    do_start
+    ;;
+*)
+    echo "Usage: /etc/init.d/S13fbcp {start|stop|restart}"
+    exit 2
+    ;;
+esac
+exit 0

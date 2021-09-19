@@ -1,0 +1,28 @@
+diff --git a/Base/CPU.cpp b/Base/CPU.cpp
+index 16c6265..c92eaa4 100644
+--- a/Base/CPU.cpp
++++ b/Base/CPU.cpp
+@@ -144,8 +144,23 @@ void ExecuteChunk()
+ 
+ void Run()
+ {
++    bool NeedCheckAutoRun = true;
++
++    // Loop until told to quit
+     while (UI::CheckEvents())
+     {
++        // Recalbox-Patch - autoboot disk 1
++        if (NeedCheckAutoRun)
++          if ((GetOption(autoload)) && (IO::TestStartupScreen()))
++          {
++            if (pFloppy1->Insert(GetOption(disk1)))
++            {
++              Frame::SetStatus("{}  inserted into drive 1", pFloppy1->DiskFile());
++              IO::AutoLoad(AutoLoadType::Disk);
++            }
++            NeedCheckAutoRun = false;
++          }
++
+         if (g_fPaused)
+             continue;
+ 

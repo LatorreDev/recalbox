@@ -1,0 +1,11 @@
+--- alsa-lib-1.2.3.2/src/conf/alsa.conf.orig	2020-10-02 09:18:01.401326281 +0200
++++ alsa-lib-1.2.3.2/src/conf/alsa.conf	2020-10-02 09:18:28.804958824 +0200
+@@ -11,7 +11,7 @@
+ 			"/usr/etc/alsa/conf.d"
+ 			"/etc/alsa/conf.d"
+ 			"/etc/asound.conf|||/usr/etc/asound.conf"
+-			"~/.asoundrc"
++			"/overlay/.configs/.asoundrc"
+ 			{
+ 				@func concat
+ 				strings [

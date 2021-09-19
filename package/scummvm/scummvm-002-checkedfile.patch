@@ -1,0 +1,43 @@
+Replace check_gamedata configuration by a "gameid".checked file in game directory.
+Avoid multiple MD5 verification, also for command-line games.
+
+Signed-off-by: Laurent Merckx <laurent-merckx@skynet.be>
+
+--- a/engines/grim/grim.cpp
++++ b/engines/grim/grim.cpp
+@@ -34,6 +34,7 @@
+ #include "common/config-manager.h"
+ #include "common/stuffit.h"
+ #include "common/translation.h"
++#include "common/stream.h"
+ 
+ #include "backends/keymapper/action.h"
+ #include "backends/keymapper/keymap.h"
+@@ -340,8 +341,10 @@ Common::Error GrimEngine::run() {
+ 		}
+ 	}
+ 
+-	ConfMan.registerDefault("check_gamedata", true);
+-	if (ConfMan.getBool("check_gamedata") && getGameFlags() != ADGF_REMASTERED) {
++	// If this file exists, game files have already been checked
++	Common::FSNode gameDir = Common::FSNode(ConfMan.get("path"));
++	Common::FSNode checkFile = gameDir.getChild(ConfMan.get("gameid") + ".checked");
++	if (!checkFile.exists()) {
+ 		MD5CheckDialog d;
+ 		if (!d.runModal()) {
+ 			Common::U32String confirmString = Common::U32String::format(_(
+@@ -356,8 +359,12 @@ Common::Error GrimEngine::run() {
+ 			}
+ 		}
+ 
+-		ConfMan.setBool("check_gamedata", false);
+-		ConfMan.flushToDisk();
++		else {
++			// Only create check file if no error
++			Common::WriteStream* checkStream = checkFile.createWriteStream();
++			checkStream->finalize();
++			delete checkStream;
++		}
+ 	}
+ 
+ 	g_resourceloader = new ResourceLoader();

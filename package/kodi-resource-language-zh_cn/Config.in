@@ -1,0 +1,8 @@
+config BR2_PACKAGE_KODI_RESOURCE_LANGUAGE_zh_cn
+	bool "kodi-resource-language-zh_cn"
+	default y
+	depends on BR2_PACKAGE_KODI
+	help
+	  Kodi zh_cn language resource
+
+	  https://kodi.tv

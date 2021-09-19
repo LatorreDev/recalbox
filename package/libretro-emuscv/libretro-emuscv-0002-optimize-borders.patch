@@ -1,0 +1,13 @@
+diff --git a/src/config.cpp b/src/config.cpp
+index aa99602..70af4c9 100755
+--- a/src/config.cpp
++++ b/src/config.cpp
+@@ -720,7 +720,7 @@ void DLL_PREFIX apply_display_config()
+ #elif defined(_RESOLUTION_AUTO_MEDIUM)
+ 			config.window_resolution = SETTING_RESOLUTION_MEDIUM_VAL;
+ #else
+-			config.window_resolution = SETTING_RESOLUTION_HIGH_VAL;
++			config.window_resolution = SETTING_RESOLUTION_LOW_VAL; //SETTING_RESOLUTION_HIGH_VAL;
+ #endif
+ 			break;
+ 	}

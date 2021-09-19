@@ -1,0 +1,94 @@
+#!/bin/sh
+# Start/Stop miniTFTSupport 
+
+PIDFILE="/var/run/miniTFT.pid"
+scriptPID="$(cat /var/run/miniTFT.pid)"
+NAME="S32miniTFT"
+RUN_AS=`id -u root`
+CMD="/recalbox/scripts/miniTFTSupport.sh"
+systemsetting="recalbox_settings"
+INIT_SCRIPT=$(basename "$0")
+
+#some useful system constants
+fbDevice="/dev/fb1"
+FFMPEG="/usr/bin/ffmpeg"
+
+#some useful video constants
+LogoFolder='/recalbox/share_init/system/tft_logos'
+DefaultStopLogo='RBvideos/recalboxIntroExplode.mp4'
+
+#get configuration from recalbox.conf
+tftEnabled="$(${systemsetting} -command load -key system.secondminitft.enabled)"
+recallog -s "${INIT_SCRIPT}" -t "CONFIG" "S32mini TFT : Reading system.secondminitft.enabled => ${tftEnabled}"
+
+
+
+tftResolution="$(${systemsetting} -command load -key system.secondminitft.resolution)"
+tftType="$(${systemsetting} -command load -key system.secondminitft.type)"
+
+#needed to use scaling with ffmpeg
+case "${tftResolution}" in
+    240p)    tftFullResolution=("-vf" "scale=320:-1,setdar=4/3,pad=width=320:height=240:x=0:y=15:color=black")  ;;
+    320p)    tftFullResolution=("-s" "480x320")  ;;
+esac
+
+#force to 320p to keep only 1 videos directory
+#ffmpg will be used to resize
+tftResolution=320p
+
+
+if [ "${tftType}" = "ogst" ]; then
+    fbDevice="/dev/fb_"
+fi
+
+do_start() {
+    recallog -s "${INIT_SCRIPT}" -t "CONFIG" "Starting ${NAME}"
+    start-stop-daemon --start --background --user $RUN_AS --pidfile $PIDFILE --make-pidfile --chuid $RUN_AS --startas $CMD -- -n
+}
+
+do_stop() {
+    pkill -P "${scriptPID}" &> /dev/null
+    #display stop video
+    dd if=/dev/zero of="${fbDevice}" &> /dev/null    #clear before draw
+    "${FFMPEG}" -re -i "${LogoFolder}"/"${tftResolution}"/"${DefaultStopLogo}" "${tftFullResolution[@]}" -c:v rawvideo -pix_fmt rgb565le -f fbdev "${fbDevice}" &> /dev/null &
+    #"${FFMPEG}" -re -i "${LogoFolder}"/"${tftResolution}"/"${DefaultStopLogo}" -s "${tftFullResolution}" -aspect 4:3 -pix_fmt rgb565le -f fbdev "${fbDevice}"  &> /dev/null &
+    dd if=/dev/zero of="${fbDevice}" &> /dev/null #clear before draw
+    echo "Stopping tft support"
+    start-stop-daemon --stop --pidfile $PIDFILE
+}
+
+
+case "$1" in
+start)
+    if [ "${tftEnabled}" == "1" ]; then
+        recallog -s "${INIT_SCRIPT}" -t "CONFIG" "Starting $NAME"
+        do_start
+    else
+        recallog -s "${INIT_SCRIPT}" -t "CONFIG" "$NAME not enabled"
+    fi
+    ;;
+stop)
+    if [ "${tftEnabled}" == "1" ]; then
+        recallog -s "${INIT_SCRIPT}" -t "CONFIG" "Stopping $NAME"
+        do_stop
+    else
+        recallog -s "${INIT_SCRIPT}" -t "CONFIG" "$NAME not enabled"
+    fi
+    ;;
+restart)
+    if [ "${tftEnabled}" == "1" ]; then
+        recallog -s "${INIT_SCRIPT}" -t "CONFIG" "Restarting $NAME"
+        pkill -P "${scriptPID}" &> /dev/null
+        echo "Stopping tft support"
+        start-stop-daemon --stop --pidfile $PIDFILE
+        do_start
+    else
+        recallog -s "${INIT_SCRIPT}" -t "CONFIG" "$NAME not enabled"
+    fi
+    ;;
+*)
+    echo "Usage: /etc/init.d/${NAME} {start|stop|restart}"
+    exit 2
+    ;;
+esac
+exit 0

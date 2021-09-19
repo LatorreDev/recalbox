@@ -1,0 +1,12 @@
+config BR2_PACKAGE_LIBGO2
+	bool "libgo2"
+	select BR2_PACKAGE_ALSA_LIB
+	select BR2_PACKAGE_LIBEVDEV
+	select BR2_PACKAGE_LIBDRM
+	select BR2_PACKAGE_LIBPNG
+	select BR2_PACKAGE_LIBRGA
+	select BR2_PACKAGE_OPENAL
+	help
+	  libgo2 - Support library for the ODROID-GO Advance
+
+	  https://github.com/OtherCrashOverride/libgo2

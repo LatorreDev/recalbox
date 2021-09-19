@@ -1,0 +1,39 @@
+--- a/xbmc/messaging/ApplicationMessenger.cpp 2020-04-17 15:15:06.174603268 +0200
++++ b/xbmc/messaging/ApplicationMessenger.cpp 2020-04-17 15:16:35.109765876 +0200
+@@ -32,6 +32,27 @@
+     ThreadMessage  m_msg;
+ };
+ 
++void RecalboxMsg(unsigned int dwMessage) {
++  //CLog::Log(LOGNOTICE, "RECALBOX MESSAGE %i (SHUTDOWN=%i, POWERDOWN=%i, QUIT=%i, RESTART=%i)", pMsg->dwMessage, TMSG_SHUTDOWN, TMSG_POWERDOWN, TMSG_QUIT, TMSG_RESTART);
++  if(dwMessage == TMSG_QUIT || dwMessage == TMSG_RESTART || dwMessage == TMSG_POWERDOWN) {
++    FILE* fd = fopen("/var/run/kodi.msg", "a");
++    if(fd != NULL) {
++      switch(dwMessage) {
++      case TMSG_QUIT:
++       fprintf(fd, "EXIT\n");
++       break;
++      case TMSG_RESTART:
++       fprintf(fd, "RESTART\n");
++       break;
++      case TMSG_POWERDOWN:
++       fprintf(fd, "SHUTDOWN\n");
++       break;
++      }
++      fclose(fd);
++    }
++  }
++}
++
+ CDelayedMessage::CDelayedMessage(ThreadMessage& msg, unsigned int delay) : CThread("DelayedMessage")
+ {
+   m_msg = msg;
+@@ -221,6 +242,8 @@
+ 
+ void CApplicationMessenger::ProcessMessage(ThreadMessage *pMsg)
+ {
++  RecalboxMsg(pMsg->dwMessage);
++
+   //special case for this that we handle ourselves
+   if (pMsg->dwMessage == TMSG_CALLBACK)
+   {

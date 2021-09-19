@@ -1,0 +1,12 @@
+diff --git a/src/vm/defines.h b/src/vm/defines.h
+index 9bcbb6c..4bcf592 100755
+--- a/src/vm/defines.h
++++ b/src/vm/defines.h
+@@ -3,6 +3,7 @@
+ #include <array>
+ #include <cstddef>
+ #include <cstdint>
++#include <cstddef>
+ 
+ namespace retro8
+ {

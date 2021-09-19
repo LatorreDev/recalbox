@@ -1,0 +1,7 @@
+# Plateform: RPI4
+# Description: Turbo
+# Frequency: 1800
+
+over_voltage=4
+arm_freq=1800
+gpu_freq=600

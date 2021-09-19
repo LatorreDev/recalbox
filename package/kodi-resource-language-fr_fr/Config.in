@@ -1,0 +1,8 @@
+config BR2_PACKAGE_KODI_RESOURCE_LANGUAGE_fr_fr
+	bool "kodi-resource-language-fr_fr"
+	default y
+	depends on BR2_PACKAGE_KODI
+	help
+	  Kodi fr_fr language resource
+
+	  https://kodi.tv

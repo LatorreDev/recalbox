@@ -1,0 +1,14 @@
+diff --git a/gfx/drivers_context/vc_egl_ctx.c b/gfx/drivers_context/vc_egl_ctx.c
+index 646c79223b..c6545c9e41 100644
+--- a/gfx/drivers_context/vc_egl_ctx.c
++++ b/gfx/drivers_context/vc_egl_ctx.c
+@@ -78,6 +78,9 @@ typedef struct
+    PFNEGLDESTROYIMAGEKHRPROC peglDestroyImageKHR;
+ } vc_ctx_data_t;
+ 
++static bool gfx_ctx_vc_bind_api(void *data,
++      enum gfx_ctx_api api, unsigned major, unsigned minor);
++
+ /* TODO/FIXME - static globals */
+ static enum gfx_ctx_api vc_api = GFX_CTX_NONE;
+ 

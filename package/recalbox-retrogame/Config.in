@@ -1,0 +1,7 @@
+config BR2_PACKAGE_RECALBOX_RETROGAME
+	bool "recalbox-retrogame"
+	help
+	  Recalbox-retrogame is optimized for Pi2
+	  and manages a 2 player panel with an ESC key.
+
+	  https://github.com/ian57/Recalbox-Retrogame-2Players-Pi2

@@ -1,0 +1,24 @@
+From: Szymon Janc <szymon.janc@...>
+Subject: [PATCH 4/5] profiles/input: Remove not needed sixaxis checks
+Newsgroups: gmane.linux.bluez.kernel
+Date: 2015-06-15 18:28:29 GMT (36 weeks, 4 days, 21 hours and 33 minutes ago)
+
+This check is now needed only for DualShock 4.
+---
+ profiles/input/server.c | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/profiles/input/server.c b/profiles/input/server.c
+index eb3fcf8..101108b 100644
+--- bluez5_utils-5.54/profiles/input/server.c	2020-07-04 22:20:40.219070704 +0200
++++ bluez5_utils-5.54/profiles/input/server.c	2020-07-04 22:21:23.375189660 +0200
+@@ -121,8 +121,7 @@ static bool dev_is_sixaxis(const bdaddr_t *src, const bdaddr_t *dst)
+ 	pid = btd_device_get_product(device);
+ 
+ 	cp = get_pairing(vid, pid, NULL);
+-	if (cp && (cp->type == CABLE_PAIRING_SIXAXIS ||
+-					cp->type == CABLE_PAIRING_DS4))
++	if (cp && cp->type == CABLE_PAIRING_DS4)
+ 		return true;
+ 
+ 	return false;

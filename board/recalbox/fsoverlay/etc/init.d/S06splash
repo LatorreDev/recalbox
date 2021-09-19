@@ -1,0 +1,153 @@
+#!/bin/bash
+# vim: syntax=bash
+# vim: filetype=sh
+
+if [ "$1" != "start" ]; then
+  exit 0
+fi
+
+SKIPVIDEOSPLASHFLAG=/overlay/.configs/skipvideosplash
+INTERNALDEVICE=$(/recalbox/scripts/recalbox-part.sh "share_internal")
+ARCH=$(cat /recalbox/recalbox.arch)
+INIT_SCRIPT=$(basename "$0")
+
+# first boot or upgrade
+if [ -f "$SKIPVIDEOSPLASHFLAG" ] || [ -f /tmp/.install.sh ] || [ ! -e "$INTERNALDEVICE" ] || ls /boot/update/recalbox-*.img.xz >/dev/null 2>&1 ; then
+  [[ -f "$SKIPVIDEOSPLASHFLAG" ]] && rm "$SKIPVIDEOSPLASHFLAG"
+  recallog -s "${INIT_SCRIPT}" -t "INSTALL" "Install in progress. Don't play boot video"
+  exit 0
+fi
+
+## Global variables ##
+systemsetting="recalbox_settings"
+machineArch=$(arch)
+
+# define some paths
+originalVideoPath="/recalbox/system/resources/splash"
+originalSmallVideoPath="${originalVideoPath}/240p"
+customVideoPath="/overlay/bootvideos"
+
+# get output video size
+fbdevHeight=$(cut -d, -f2 /sys/class/graphics/fb0/virtual_size)
+
+## -1 : Video will be stopped when emulationstation is ready to start.
+##  0 : All the video will be played before emulationstation start (default)
+## >0 : Time the video will be played before emulationstation start (in seconds)
+timeout="$($systemsetting -command load -key system.splash.length -source /boot/recalbox-backup.conf)"
+# in specific case, force playing for 20s
+if [ -z "${timeout}" ] || [ "${timeout}" -eq 0 ] || [ "${timeout}" -lt -1 ]; then
+  videoLength=20
+else
+  videoLength="$timeout"
+fi
+
+## Functions ##
+
+# turnOffGPiCaseHDMI
+#   takes no argument, power off HDMI port to save energy when running in a GPi case
+turnOffGPiCaseHDMI() {
+  if grep -q -E '^case=GPiV1:1' /boot/recalbox-boot.conf; then
+     recallog -s "${INIT_SCRIPT}" -t "GPI" "GPi case detected: turning HDMI off"
+    tvservice -o
+  fi
+}
+
+# selectVideo
+#   takes no argument and outputs a random video from those available
+selectVideo() {
+  # What to play?
+  local videoSearchPath=()
+  local whatToPlay
+  local videos
+  local num_videos
+  whatToPlay="$($systemsetting -command load -key system.splash.select -source /boot/recalbox-backup.conf)"
+  if [ "$whatToPlay" != "all" ] && [ "$whatToPlay" != "recalbox" ] && [ "$whatToPlay" != "custom" ] ; then whatToPlay="all" ; fi
+
+  if [ "$whatToPlay" = "all" ] || [ "$whatToPlay" = "recalbox" ]; then
+    [ "${fbdevHeight}" -le 240 ] && videoSearchPath+=("$originalSmallVideoPath") || videoSearchPath+=("$originalVideoPath")
+  fi
+  if [ "$whatToPlay" = "all" ] || [ "$whatToPlay" = "custom" ]; then
+    videoSearchPath+=("$customVideoPath")
+  fi
+
+  # lookup selected directories and put it in videos var
+  mapfile -t videos < <(find "${videoSearchPath[@]}" -maxdepth 1 \( -name "*.mp4" -o -name "*.avi" -o -name "*.mkv" \))
+  # get number of available videos
+  num_videos=${#videos[*]}
+  # select one randomly
+  echo "${videos[$((RANDOM%num_videos))]}"
+}
+
+# showIntroBackground
+#   displays our intro background via the framebuffer
+showIntroBackground() {
+  if [ "${fbdevHeight}" -le 320 ] ; then
+    fbv2 -f -i /recalbox/system/resources/splash/240p/logo-version.png
+  else
+    fbv2 -f -i /recalbox/system/resources/splash/logo-version.png
+  fi
+  # launching ES just after fbv can cause some screen corruption
+  sleep 1
+}
+
+# findConnectedConnectors
+#   returns a list of connected connectors (using mpv)
+findConnectedConnectors() {
+  grep -l ^connected /sys/class/drm/card*/status | sed 's/.*card\([0-9]\+\)-\([^\/]\+\).*/\1.\2/'
+}
+
+# start mpv then show the background (aka pacman screen)
+# $1 timeout
+# $2 array of options for mpv
+runInBackground() {
+  local timeout="$1"; shift
+  local options=("$@")
+
+  if [ "$timeout" -gt 0 ]; then
+    timeout "$videoLength" mpv "${options[@]}"
+  else
+    mpv "${options[@]}"
+  fi
+  showIntroBackground
+}
+
+# playVideoOnOneScreen
+#   play a video on a specific display
+# intput:
+# * filename to play
+# * optins regarding output screen (--ao=alsa  --vo=drm  --drm-connector=1.DVI-I-1)
+playVideoOnOneScreen() {
+  local options
+  # shellcheck disable=SC2206
+  options+=($2) # get space delimited options as is
+  options+=(--ao=pulse)
+  options+=(--fs --sub-file=/recalbox/system/resources/splash/recalboxintro.srt --really-quiet)
+  options+=("$1")
+  runInBackground "$timeout" "${options[@]}" >/dev/null 2>&1 &
+}
+
+# playVideo
+#   select all screen and run playVideoOnOneScreen for each connected screen
+# intput:
+# * filename to play
+playVideo() {
+  local conn
+  if [[ "$machineArch" =~ x86 ]]; then
+    # on x86 and x86_64, find connected monitors and play video on all of them
+    findConnectedConnectors |while read -r conn; do
+      playVideoOnOneScreen "$1" "--vo=drm --drm-connector=$conn"
+    done
+  elif [[ "$ARCH" == "rpi1" || "$ARCH" == "rpi2" || "$ARCH" == "rpi3" ]]; then
+    # on rpi1 2 and 3 we need to force output
+    playVideoOnOneScreen "$1" "--hwdec=auto -vo=rpi"
+  else
+    # on other simply play
+    playVideoOnOneScreen "$1"
+  fi
+}
+
+## Main ##
+
+playVideo "$(selectVideo)"
+
+exit 0

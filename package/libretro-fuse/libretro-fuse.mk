@@ -1,0 +1,35 @@
+################################################################################
+#
+# FUSE
+#
+################################################################################
+
+LIBRETRO_FUSE_VERSION = c2f03e6f08f3e2a03d7888fe756e0beb7979f983
+LIBRETRO_FUSE_SITE = $(call github,libretro,fuse-libretro,$(LIBRETRO_FUSE_VERSION))
+LIBRETRO_FUSE_LICENSE = GPL-3.0
+LIBRETRO_FUSE_LICENSE_FILES = LICENSE
+
+ifeq ($(BR2_aarch64),y)
+LIBRETRO_FUSE_CFLAGS = $(COMPILER_COMMONS_CFLAGS_NOLTO)
+LIBRETRO_FUSE_CXXFLAGS = $(COMPILER_COMMONS_CXXFLAGS_NOLTO)
+LIBRETRO_FUSE_LDFLAGS = $(COMPILER_COMMONS_LDFLAGS_NOLTO)
+else
+LIBRETRO_FUSE_CFLAGS = $(COMPILER_COMMONS_CFLAGS_SO)
+LIBRETRO_FUSE_CXXFLAGS = $(COMPILER_COMMONS_CXXFLAGS_SO)
+LIBRETRO_FUSE_LDFLAGS = $(COMPILER_COMMONS_LDFLAGS_SO)
+endif
+
+define LIBRETRO_FUSE_BUILD_CMDS
+	$(SED) "s|-O2|-O3|g" $(@D)/Makefile.libretro
+	CFLAGS="$(TARGET_CFLAGS) $(LIBRETRO_FUSE_CFLAGS)" \
+		CXXFLAGS="$(TARGET_CXXFLAGS) $(LIBRETRO_FUSE_CXXFLAGS)" \
+		LDFLAGS="$(TARGET_LDFLAGS) $(LIBRETRO_FUSE_LDFLAGS)" \
+		$(MAKE) CXX="$(TARGET_CXX)" CC="$(TARGET_CC)" -C $(@D)/ -f Makefile.libretro platform="$(RETROARCH_LIBRETRO_BOARD)"
+endef
+
+define LIBRETRO_FUSE_INSTALL_TARGET_CMDS
+	$(INSTALL) -D $(@D)/fuse_libretro.so \
+		$(TARGET_DIR)/usr/lib/libretro/fuse_libretro.so
+endef
+
+$(eval $(generic-package))

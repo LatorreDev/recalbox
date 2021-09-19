@@ -1,0 +1,8 @@
+# Plateform: RPI4
+# Description: No Limit
+# Warning
+# Frequency: 2147
+
+over_voltage=8
+arm_freq=2147
+gpu_freq=750
